@@ -1,0 +1,18 @@
+[book]
+authors = ["yosheng"]
+language = "zh"
+multilingual = false
+src = "src"
+title = "三国志战略版"
+
+[preprocessor]
+
+[preprocessor.admonish]
+command = "mdbook-admonish"
+assets_version = "3.0.2" # do not edit: managed by `mdbook-admonish install`
+
+[output]
+
+[output.html]
+no-section-label = true
+additional-css = ["./mdbook-admonish.css"]
