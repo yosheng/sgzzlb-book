@@ -19,3 +19,4 @@ additional-css = ["./mdbook-admonish.css"]
 git-repository-url = "https://github.com/yosheng/sgzzlb-book"
 git-repository-icon = "fa-github"
 edit-url-template = "https://github.com/yosheng/sgzzlb-book/edit/master/{path}"
+site-url = "/sgzzlb-book/"  # 添加这行
