@@ -1,0 +1,439 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>新手教程 - 三国志战略版</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././mdbook-admonish.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">三国志战略版</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/yosheng/sgzzlb-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/yosheng/sgzzlb-book/edit/master/src/season1/newbie.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="三国志战略版-s1-开局攻略"><a class="header" href="#三国志战略版-s1-开局攻略">三国志战略版 S1 开局攻略</a></h1>
+<h2 id="一入门攻略"><a class="header" href="#一入门攻略">一、入门攻略</a></h2>
+<h3 id="1-主公选择"><a class="header" href="#1-主公选择">1. 主公选择</a></h3>
+<p>赛季开局提供4种主公类型：明主、贤主、英主、霸主。<br />
+回答路线参考：</p>
+<ul>
+<li><strong>明主</strong>：11133</li>
+<li><strong>贤主</strong>：33333</li>
+<li><strong>英主</strong>：11111</li>
+<li><strong>霸主</strong>：11121</li>
+</ul>
+<h4 id="主公属性对比"><a class="header" href="#主公属性对比">主公属性对比</a></h4>
+<div class="table-wrapper"><table><thead><tr><th>类型</th><th>奖励道具</th><th>属性加成</th></tr></thead><tbody>
+<tr><td>明主</td><td>三文矛</td><td>武力 +4，统率 +6</td></tr>
+<tr><td>贤主</td><td>50000铜币</td><td>速度 +6</td></tr>
+<tr><td>英主</td><td>1300战法点</td><td>智力 +6</td></tr>
+<tr><td>霸主</td><td>大宛马、服方尊</td><td>速度 +4，武力 +6</td></tr>
+</tbody></table>
+</div>
+<p><strong>推荐选择：</strong> 贤主或英主</p>
+<ul>
+<li>贤主提供50000铜币，可换1000战法点及蓝将，甚至可能获得紫将。</li>
+<li>英主提供战法点，适合战法升级需求。</li>
+</ul>
+<h3 id="2-开荒武将推荐"><a class="header" href="#2-开荒武将推荐">2. 开荒武将推荐</a></h3>
+<ul>
+<li><strong>买开局号</strong>：推荐赵云、张飞、刘备、夏侯惇。</li>
+<li><strong>首充开局</strong>：
+<ul>
+<li><strong>68元</strong>：孙坚 + 孙策</li>
+<li><strong>6元</strong>：孙坚 + 关平</li>
+</ul>
+</li>
+<li><strong>0氪党</strong>：关平 + 任意紫将/蓝将（开荒速度稍慢）。</li>
+</ul>
+<h3 id="3-开荒节奏"><a class="header" href="#3-开荒节奏">3. 开荒节奏</a></h3>
+<ol>
+<li>将战法点优先用于开荒武将，提升效率。</li>
+<li>武将到5级解锁第二战法，可先用B级战法过渡（需传承蓝将并演练）。</li>
+<li>武将5级、兵力1000后开始打3级地，优先升级武将和获取资源。</li>
+<li>武将10级后分配属性点，侦察周围4级地并准备开荒。</li>
+<li>开荒期间打木牛流马资源道具，并合理分配资源与兵力。</li>
+<li>武将20级后解锁第三战法与装备系统，准备开5级地。</li>
+<li>主城升7级君王殿，确保队伍能力过渡至高级土地。</li>
+<li>武将30级主力队伍即可开6级地，优先打资源地。</li>
+</ol>
+<h3 id="4-前期发展"><a class="header" href="#4-前期发展">4. 前期发展</a></h3>
+<ol>
+<li><strong>跟随主线任务</strong>
+<ul>
+<li>开荒时期，建议各位主公可以紧跟主线任务。</li>
+<li>主线任务已经梳理了最合理的升级路线，一开始跟着主线升级设施，可以最大限度减少资源的浪费。</li>
+</ul>
+</li>
+<li><strong>加入同盟</strong>
+<ul>
+<li>加入同盟后会有同盟资源产量增益，对前期的发展会有较大帮助。</li>
+</ul>
+</li>
+<li><strong>委任内政官</strong>
+<ul>
+<li>随着任务的进行，委任功能会开放。</li>
+<li>有些武将自带内政战法，委任这些武将作为内政官时，可以有效提升城内各类资源的产量。</li>
+</ul>
+</li>
+<li><strong>名声、势力值</strong>
+<ul>
+<li>名声决定了可攻占土地的上限。</li>
+<li>名声每增加100点，领地上限可以增加1块。</li>
+<li>势力值是实力的象征，可以通过占领高级领地、建造个人建筑等方式提升。</li>
+</ul>
+</li>
+<li><strong>策书</strong>
+<ul>
+<li>策书可用于屯田、讨伐贼寇、建立营帐等，策书每小时回复一个。</li>
+<li>前期资源匮乏的情况下，不建议使用策书讨伐野怪，应尽量屯当前最高等级的资源田。</li>
+</ul>
+</li>
+</ol>
+<h3 id="5-资源获取"><a class="header" href="#5-资源获取">5. 资源获取</a></h3>
+<h4 id="一资源是否可以进行买卖"><a class="header" href="#一资源是否可以进行买卖">一、资源是否可以进行买卖</a></h4>
+<p>在游戏中，四项基础资源（木材、石料、粮食、铁矿）无法通过金锥和玉璧进行购买。</p>
+<p>玩家可以购买策书，策书具有多种功能，包括屯田、筑城、讨伐、营帐和箭塔。每个玩家每天最多可以购买三次策书。</p>
+<h4 id="二基础资源主要获取方式"><a class="header" href="#二基础资源主要获取方式">二、基础资源主要获取方式</a></h4>
+<ol>
+<li>
+<p><strong>资源建筑</strong></p>
+<p>游戏中，主城和分城均拥有四个资源建筑，分别是农场、采石场、伐木场和冶铁台。每个资源建筑能够提升相应的资源产量。建议在前期资源充足的情况下，根据任务指引升级相应的资源建筑。</p>
+</li>
+<li>
+<p><strong>资源地</strong></p>
+<p>资源地是游戏中获取资源的最基本手段，每占领一块资源地，都能根据其等级提升相应的资源产量。不同等级的资源地提供不同的产量，具体如下：</p>
+<div class="table-wrapper"><table><thead><tr><th>资源地等级</th><th>木材</th><th>铁矿</th><th>石料</th><th>粮食</th></tr></thead><tbody>
+<tr><td>1级</td><td>200</td><td>200</td><td>200</td><td>200</td></tr>
+<tr><td>2级</td><td>300</td><td>300</td><td>300</td><td>300</td></tr>
+<tr><td>3级</td><td>400</td><td>400</td><td>400</td><td>400</td></tr>
+<tr><td>4级</td><td>600</td><td>600</td><td>600</td><td>600</td></tr>
+<tr><td>5级</td><td>1300</td><td>1300</td><td>1300</td><td>1300</td></tr>
+<tr><td>6级</td><td>1500</td><td>1500</td><td>1500</td><td>1500</td></tr>
+<tr><td>7级</td><td>1700</td><td>1700</td><td>1700</td><td>1700</td></tr>
+<tr><td>8级</td><td>1900</td><td>1900</td><td>1900</td><td>1900</td></tr>
+<tr><td>9级</td><td>2100</td><td>2100</td><td>2100</td><td>2100</td></tr>
+<tr><td>10级</td><td>2300</td><td>2300</td><td>2300</td><td>2300</td></tr>
+</tbody></table>
+</div>
+<p>从表格中可以看出，5级资源地的资源产量相比4级有显著提升。前四级的资源产量差距较小，而5级资源地则应尽量占领以提升资源产量。至于6至10级的资源地，尽管资源产量有所提升，但相对较为有限，建议根据实际需求进行攻占。</p>
+</li>
+</ol>
+<h4 id="三资源是否可以进行抢夺"><a class="header" href="#三资源是否可以进行抢夺">三、资源是否可以进行抢夺</a></h4>
+<p>游戏中无法直接抢夺他人资源。如果你对其他玩家的资源地发起进攻并获胜，可以占领该资源地，从而增加自己的资源产量。如果对其他玩家的主城发起进攻并获胜，可以俘虏对方，但无法获取对方仓库中的资源。即使对方选择缴纳资源解除俘虏，资源也将由同盟获取，而非个人。</p>
+<h4 id="四资源用完了如何获取"><a class="header" href="#四资源用完了如何获取">四、资源用完了如何获取</a></h4>
+<ol>
+<li>
+<p><strong>集市交易</strong></p>
+<p>如果缺少某一单一资源而其他资源充足，可以通过升级君王殿至5级解锁集市功能。在政厅点击贸易，可以依照一定比例将其他资源转化为所需的资源。</p>
+</li>
+<li>
+<p><strong>屯田</strong></p>
+<p>选择合适的资源地，并派遣一支闲置队伍进行屯田。每次屯田消耗3本策书，时间为10分钟，可以获得与资源地类型相对应的资源。例如，石料资源地的屯田只会产出石料。资源地等级越高，屯田获得的资源越多。</p>
+</li>
+<li>
+<p><strong>等待</strong></p>
+<p>根据资源产量，资源会自动产出。玩家可以等待自然产出。</p>
+</li>
+<li>
+<p><strong>木牛流马</strong></p>
+<p>木牛流马每天在8点、14点和20点刷新，玩家可通过战胜木牛流马获得一定的资源和预备兵。如果资源不足，切记不要忘记去截击木牛流马。</p>
+</li>
+<li>
+<p><strong>讨伐贼寇</strong></p>
+<p>在霸业达到一定阶段后，地图上会刷新一些贼寇，玩家可以消耗一本策书进行讨伐。战胜5级贼寇可以获得10000资源，但奖励资源的类型是随机的。</p>
+</li>
+</ol>
+<h2 id="二进阶攻略"><a class="header" href="#二进阶攻略">二、进阶攻略</a></h2>
+<ol>
+<li>
+<p><strong>升级节奏：</strong></p>
+<ul>
+<li>20~30级：扫荡5级地</li>
+<li>30~40级：扫荡6级地</li>
+<li>35~49级：扫荡7级地</li>
+<li>40~49级：扫荡8级地</li>
+</ul>
+</li>
+<li>
+<p><strong>加入同盟：</strong></p>
+<ul>
+<li>同盟玩法能增强互动性，包括打城、迁城、对抗等活动。</li>
+</ul>
+</li>
+<li>
+<p><strong>俘虏解脱方式：</strong></p>
+<ul>
+<li>缴纳资源</li>
+<li>同盟解救</li>
+<li>紧急撤离（放弃所有领地）</li>
+</ul>
+</li>
+<li>
+<p><strong>前期资源管理：</strong></p>
+<ul>
+<li>6级地建造币厂，升到2-3级即可。</li>
+<li>每日铜币强征以加速战法升级。</li>
+</ul>
+</li>
+<li>
+<p><strong>藏兵技巧：</strong></p>
+<ul>
+<li>通过调整队伍位置藏兵</li>
+</ul>
+<blockquote>
+<p>假设您的主城有 5 个军舍位置，而您的主力队伍有 3 队。
+将这 3 队的主将分别移动到最后两个位置的副将位上，这样当敌人攻打您的主城时，主力队伍不会被直接攻击到。</p>
+</blockquote>
+<ul>
+<li>通过驻守终止藏兵</li>
+</ul>
+<blockquote>
+<p>在主城中，将部队设置为“驻守”状态，然后点击“终止驻守”。
+此时，队伍会停留在主城外表面上看仍在主城范围内，但实际上不会参与主城战斗，敌人也无法直接攻击到这些部队。</p>
+</blockquote>
+</li>
+</ol>
+<hr />
+<h2 id="三s1赛季主流阵容推荐"><a class="header" href="#三s1赛季主流阵容推荐">三、S1赛季主流阵容推荐</a></h2>
+<p><img src="images/image001-17341685293952.jpg" alt="img" /></p>
+<hr />
+<h2 id="四s1结束前需做的准备备战s2"><a class="header" href="#四s1结束前需做的准备备战s2">四、S1结束前需做的准备（备战S2）</a></h2>
+<ol>
+<li>
+<p><strong>囤积资源：</strong></p>
+<ul>
+<li>满红紫卡/蓝卡</li>
+<li>3000金珠用于换战法点，1000金珠用于妙升建筑。</li>
+</ul>
+</li>
+<li>
+<p><strong>抽卡与改名：</strong></p>
+<ul>
+<li>霸业割据包：8000金珠（20次抽奖，10次保底1橙）。</li>
+<li>改名：500玉璧（赛季开始前3天可改名）。</li>
+</ul>
+</li>
+<li>
+<p><strong>赛季重置内容：</strong></p>
+<ul>
+<li>玉璧、金珠、装备、材料、武将、战法保留。</li>
+<li>其余内容（战法点、铜币、资源等）重置。</li>
+</ul>
+</li>
+<li>
+<p><strong>赛季环境变化：</strong></p>
+<ul>
+<li>S2由3~4个区合并，土地资源更加紧张。</li>
+<li>S1末期可多打野怪，准备装备。</li>
+</ul>
+</li>
+<li>
+<p><strong>核心事项：</strong></p>
+<ul>
+<li>转区：花费500金珠可在合并区间转区。</li>
+<li>S2限定武将：如孙尚香、司马懿、张辽，仅通过成就奖励或活动获取。</li>
+<li>为S2兑换战法点准备足够武将。</li>
+</ul>
+</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../season1/introduction.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../season1/newbie-reclaim.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../season1/introduction.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../season1/newbie-reclaim.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

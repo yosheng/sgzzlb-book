@@ -1,0 +1,1233 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>三国志战略版</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="./mdbook-admonish.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">三国志战略版</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/yosheng/sgzzlb-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="三国志战略版游戏简介"><a class="header" href="#三国志战略版游戏简介">《三国志战略版》游戏简介</a></h1>
+<p>以下內容參考如下</p>
+<ul>
+<li><a href="https://sgz.ejoy.com/gengduo/detail-4469.html">轮回与新生——浅谈赛季制</a></li>
+</ul>
+<h2 id="游戏概述"><a class="header" href="#游戏概述">游戏概述</a></h2>
+<p>《三国志战略版》是一款SLG（Simulation Game）类型的手游，以三国时期为背景，玩家在游戏中扮演一方诸侯，通过策略和谋略争夺天下。游戏以其深厚的历史背景、丰富的策略玩法和高度的玩家互动性著称。</p>
+<h2 id="游戏周期"><a class="header" href="#游戏周期">游戏周期</a></h2>
+<p>《三国志战略版》采用赛季制模式，每个赛季通常持续三个月，分为多个阶段，每个阶段都有其特定的目标和挑战。游戏的核心玩法围绕土地的争夺展开，玩家需要占领地块来扩张领土、获取资源、推进战争和宣示主权。</p>
+<h2 id="赛季制的魅力"><a class="header" href="#赛季制的魅力">赛季制的魅力</a></h2>
+<h3 id="打破固有僵化态势"><a class="header" href="#打破固有僵化态势">打破固有僵化态势</a></h3>
+<p>赛季制允许游戏打破原有的势力平衡，将多个S1赛季的区服合并为S2赛季，使得同盟之间的实力更加均衡，竞争更加激烈。这为玩家提供了全新的博弈机会，无论是选择与前同盟和解还是加入新的同盟，每个玩家都可以决定自己的道路。</p>
+<h3 id="凝聚更多活跃玩家"><a class="header" href="#凝聚更多活跃玩家">凝聚更多活跃玩家</a></h3>
+<p>随着游戏的推进，每个区服的活跃玩家数量会逐渐减少。通过合并多个S1区服的玩家，S2赛季能够保证游戏的活跃度，并为玩家提供结识新朋友的机会。</p>
+<h3 id="树立全新游戏目标"><a class="header" href="#树立全新游戏目标">树立全新游戏目标</a></h3>
+<p>在天下一统的局面下，许多玩家在赛季后期会感到无所事事。开启全新的S2赛季，让霸业进度重置，为所有玩家提供了新的挑战和目标。</p>
+<h3 id="有序增加游戏内容"><a class="header" href="#有序增加游戏内容">有序增加游戏内容</a></h3>
+<p>对于新手玩家，游戏内容的逐步解锁有助于他们逐步熟悉游戏。更复杂的武将、战法和游戏机制会在后续赛季中有序加入，而不是一开始就全部呈现。</p>
+<h2 id="pk赛季是什么"><a class="header" href="#pk赛季是什么">PK赛季是什么？</a></h2>
+<p>PK赛季是《三国志战略版》中的一种特殊赛季，通常从第四个赛季开始。在PK赛季中，游戏引入了更多的变化和挑战，如不同的剧本、特殊的规则和新的游戏机制。这些赛季提供了不同于标准赛季的游戏体验，增加了游戏的多样性和可玩性。</p>
+<h2 id="固定3个赛季简介"><a class="header" href="#固定3个赛季简介">固定3个赛季简介</a></h2>
+<h3 id="s1赛季"><a class="header" href="#s1赛季">S1赛季</a></h3>
+<ul>
+<li><strong>简介</strong>：S1赛季是玩家的起始赛季，玩家在这里学习游戏的基本规则和策略，体验从无到有建立自己势力的过程。</li>
+<li><strong>特点</strong>：基础教学，逐步解锁游戏内容，让新手玩家逐步熟悉游戏。</li>
+</ul>
+<h3 id="s2赛季"><a class="header" href="#s2赛季">S2赛季</a></h3>
+<ul>
+<li><strong>简介</strong>：S2赛季是多个S1赛季区服合并后的新赛季，玩家将面临更加激烈的竞争和全新的挑战。</li>
+<li><strong>特点</strong>：势力重新洗牌，玩家可以选择加入新的同盟或与旧同盟继续合作，竞争更加激烈。</li>
+</ul>
+<h3 id="s3赛季"><a class="header" href="#s3赛季">S3赛季</a></h3>
+<ul>
+<li><strong>简介</strong>：S3赛季继续深化游戏策略，玩家需要更加精细地管理自己的领土和资源，同时应对来自其他玩家的挑战。</li>
+<li><strong>特点</strong>：策略深化，玩家需要更加注重同盟间的合作与对抗，以及资源的有效管理。</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="三国志战略版赛季总览"><a class="header" href="#三国志战略版赛季总览">三国志战略版赛季总览</a></h1>
+<p>以下內容參考如下</p>
+<ul>
+<li><a href="https://www.sohu.com/a/738779123_121687419">三国志战略版 18个赛季全回顾</a></li>
+</ul>
+<h2 id="s1"><a class="header" href="#s1">S1</a></h2>
+<ul>
+<li><strong>简介</strong>：新手期，抽到啥将随便玩，全区各州各盟各种背刺，分分合合，新人玩的还算不亦乐乎，玩家只要1赛季能坚持玩下来，后面赛季就能留下继续玩。</li>
+<li><strong>好玩指数</strong>：★★★★★</li>
+</ul>
+<h2 id="s2"><a class="header" href="#s2">S2</a></h2>
+<ul>
+<li><strong>简介</strong>：增加侠客军、增加S2限定武将，增加兵书，阵容进一步丰富，各种官匪对战，玩家进一步熟悉三战。</li>
+<li><strong>好玩指数</strong>：★★★★☆</li>
+</ul>
+<h2 id="s3"><a class="header" href="#s3">S3</a></h2>
+<ul>
+<li><strong>简介</strong>：增加S3限定武将、增加功勋商店，可换特技装备，增加锦帆军，象兵，虎卫军，青州兵，阵容更加进一步丰富。</li>
+<li><strong>好玩指数</strong>：★★★★☆</li>
+</ul>
+<h2 id="s4pk1群雄割据"><a class="header" href="#s4pk1群雄割据">S4：PK1群雄割据</a></h2>
+<ul>
+<li><strong>简介</strong>：马腾、袁绍、刘备、孙策4个势力，可以获得2个宝物，将武将的兵种属性直接提升为S级，武将池一下多了很多武将，各种黑科技阵容，三战从pk赛季才算正式开始，喜欢的可以选择多玩几次整训剧本。</li>
+<li><strong>好玩指数</strong>：★★★★★</li>
+</ul>
+<h2 id="s5pk2天下争锋"><a class="header" href="#s5pk2天下争锋">S5：PK2天下争锋</a></h2>
+<ul>
+<li><strong>简介</strong>：曹操VS孙刘，上三州和下三州的南北对战，中途不可以叛变，不用外交，不用担心背刺，玩家比较省心，第一次玩比较有趣，再玩就没意思了。霸业值多的一方为胜利方阵营，阶段贡献排名前1-300名玩家霸业奖励，不受同盟控制，散人玩家可自己肝到前300拿霸业，散人或月卡玩家重点关注。</li>
+<li><strong>好玩指数</strong>：★★★☆☆</li>
+</ul>
+<h2 id="s6pk3英雄露颖"><a class="header" href="#s6pk3英雄露颖">S6：PK3英雄露颖</a></h2>
+<ul>
+<li><strong>简介</strong>：玩法跟S3类似了，增加同盟秘籍，所以锁城防止抢大龙，侠客军可拿霸业。</li>
+<li><strong>好玩指数</strong>：★★☆☆☆</li>
+</ul>
+<h2 id="s7pk4赤壁之战"><a class="header" href="#s7pk4赤壁之战">S7：PK4赤壁之战</a></h2>
+<ul>
+<li><strong>简介</strong>：玩法类似天下争锋，增加水战，地图更大，可在地块上根据风向放火，火可以顺风蔓延，前线基本是各种火烧连营。和天下对比，选赤壁更好玩。霸业值多的一方为胜利方阵营，霸业值双方相同均失败。阶段贡献排名前1-300名玩家霸业奖励，不受同盟控制，散人玩家可自己肝到前300拿霸业。</li>
+<li><strong>好玩指数</strong>：★★★☆☆</li>
+</ul>
+<h2 id="s8pk5军争地利"><a class="header" href="#s8pk5军争地利">S8：PK5军争地利</a></h2>
+<ul>
+<li><strong>简介</strong>：增加地形、指令，属于尝试丰富玩法的剧本，不是太好玩。</li>
+<li><strong>好玩指数</strong>：★☆☆☆☆</li>
+</ul>
+<h2 id="s9pk6兴师伐乱"><a class="header" href="#s9pk6兴师伐乱">S9：PK6兴师伐乱</a></h2>
+<ul>
+<li><strong>简介</strong>：增加西凉军团，基本上只有霸业盟进虎牢关打吕布，别的盟战败基本就躺平了，体验不到打吕布，有水淹、火烧、个别武将新增登庸令可以改阵营，玩一次就好。</li>
+<li><strong>好玩指数</strong>：★★★☆☆</li>
+</ul>
+<h2 id="s10pk7北定中原"><a class="header" href="#s10pk7北定中原">S10：PK7北定中原</a></h2>
+<ul>
+<li><strong>简介</strong>：从这个剧本开始，赛季剧本内容开始复杂起来，除了武将，还得研究好剧本特色内容，才能如虎添翼。北定剧本最好玩的是个性系统，新增逢山开路，遇水叠桥。个性系统比较实用，强健180的体力很过瘾，巾帼对女性武将加成比较大，伐乱对讨伐加成让白板就能穿巨戟士。</li>
+<li><strong>好玩指数</strong>：★★★★★</li>
+</ul>
+<h2 id="s11pk8官渡之战"><a class="header" href="#s11pk8官渡之战">S11：PK8官渡之战</a></h2>
+<ul>
+<li><strong>简介</strong>：新增战械，战械系统应该是目前三战最复杂的内容。6个州分别有不同的属性加成，每个玩家战械仅有一队，一般是选择最强的队伍，再用战械进一步增强。曹操、袁绍不能结盟，有4个州有阵容2+1效果加7%属性，可以玩一些黑科技阵容。不能在其他州迁城，被俘虏可以出生州重振。6个武将太史慈、甘宁、贾诩、张辽、赵云、魏延可登庸令改【群】阵营，能搭配不少黑科技阵容。</li>
+<li><strong>好玩指数</strong>：★★★★★</li>
+</ul>
+<h2 id="s12pk9王师秉节"><a class="header" href="#s12pk9王师秉节">S12：PK9王师秉节</a></h2>
+<ul>
+<li><strong>简介</strong>：新增信符，可理解为一只队伍多一个辅助技能。不同的队伍可以选择不同的信符，一般是一只队伍带同一套信符，一套6个部位信符全升到橙色。战败方很惨，被平推到出生州，对方能直接迁城到你出生州，全盟被俘。</li>
+<li><strong>好玩指数</strong>：★★☆☆☆</li>
+</ul>
+<h2 id="s13pk10英雄集结"><a class="header" href="#s13pk10英雄集结">S13：PK10英雄集结</a></h2>
+<ul>
+<li><strong>简介</strong>：新增招降名将，名将可学习特性和指令，是融合了前几个赛季的大杂烩，对阵容有小小增强辅助。赛季商店每个玩家可以从6个战法技能里选择学习2个。</li>
+<li><strong>好玩指数</strong>：★★☆☆☆</li>
+</ul>
+<h2 id="s14pk11兵战四时"><a class="header" href="#s14pk11兵战四时">S14：PK11兵战四时</a></h2>
+<ul>
+<li><strong>简介</strong>：新增四季，春夏秋冬每个季节学习不同的事件、提案、计策，冬季在部分区域的河流，会结冰。结冰地面可以行军、占领、连地，不可建筑、迁城。踏雪袭营可直接把结冰附近的敌方主城拔城。战备系统新增4个宝物，4选1，比较实用的是魏公子兵法。</li>
+<li><strong>好玩指数</strong>：★★☆☆☆</li>
+</ul>
+<h2 id="s15pk12襄樊之战"><a class="header" href="#s15pk12襄樊之战">S15：PK12襄樊之战</a></h2>
+<ul>
+<li><strong>简介</strong>：三战第三个年度“大剧本”，六大出身文人、农夫、官吏、兵卒、工匠、商人，每一个出身有四个特技，一旦选择出身无法更换。水寨船只改装、船只指令，可迁城水寨周围1格，地图自带天气预报，一下雨洼地变淹地。淹地上建筑耐久降低50%，建筑功能失效无法升级，城池九宫八卦阵失效，闭城持续时间缩短50%，仅有船只可在淹地作战。</li>
+<li><strong>好玩指数</strong>：★★★★★</li>
+</ul>
+<h2 id="s16pk13云起龙襄"><a class="header" href="#s16pk13云起龙襄">S16：PK13云起龙襄</a></h2>
+<ul>
+<li><strong>简介</strong>：拜师系统，君王殿达到八级，玩家就可以建造举贤阁，可选自己已有的武将，拜师后，徒弟后相当于复制师傅，冠军枪、芦苇盾剧本强势队伍，黑科技阵容也可以搭配出不少。</li>
+<li><strong>好玩指数</strong>：★★★★★</li>
+</ul>
+<h2 id="s17pk14天师举义"><a class="header" href="#s17pk14天师举义">S17：PK14天师举义</a></h2>
+<ul>
+<li><strong>简介</strong>：大汉阵营和黄巾军阵营。汉室：袁绍、朱儁、皇甫嵩全兵种变成S属性，4个技能可选技能。黄巾军：张角、张宝、张梁能全兵种变成S属性，4个技能可选技能。可召唤与武将同等级的义军，持续15分钟，帮你打仗。拜将印可统御-1，21御可玩。每日可双倍打野3次。</li>
+<li><strong>好玩指数</strong>：★★★★☆</li>
+</ul>
+<h2 id="s18pk15陈仓之战"><a class="header" href="#s18pk15陈仓之战">S18：PK15陈仓之战</a></h2>
+<ul>
+<li><strong>简介</strong>：军令台每天刷新卡令，“打牌”增加各种增益状态。剧本可玩的四大亮点：1、登庸令。2、精锋矢阵。3、鉴往知来。4、贴标签。剧本可组合的黑科技阵容更加丰富，墩盾，神火盾等队伍都可直接玩了。区服报名后玩家不能自选阵营，系统根据区服报名人数由系统直接分配蜀阵营、魏阵营。资源州中间有官道可铺路，官道不能迁城。霸业由霸业值高的阵营贡献值前300名玩家获得，不受同盟控制，散人玩家可重点关注此本自己肝到前300拿霸业。</li>
+<li><strong>好玩指数</strong>：★★★★★</li>
+</ul>
+<h2 id="s19pk16潼关之战"><a class="header" href="#s19pk16潼关之战">S19：PK16潼关之战</a></h2>
+<ul>
+<li><strong>简介</strong>：预计2024年1月底春节前上线，SP马超、SP许褚应该要出了。</li>
+<li><strong>好玩指数</strong>：信息未提供</li>
+</ul>
+<pre><code class="language-admonish info">
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="赛季1"><a class="header" href="#赛季1">赛季1</a></h1>
+<p>内容内容参考如下</p>
+<ul>
+<li><a href="https://forum.gamer.com.tw/C.php?bsn=36815&amp;snA=2819&amp;tnum=1">【攻略】S1賽季各國最全陣容以及開荒</a></li>
+<li><a href="https://www.gamersky.com/handbooksy/202104/1380941.shtml">三国志战略版S1新手教程 从入门到精通</a></li>
+<li><a href="https://www.yx400.com/show-PsAfEcAiRT.html">三国志战略版S1赛季介绍</a></li>
+<li><a href="https://www.gamersky.com/handbooksy/202206/1491520.shtml">《三国志战略版》开荒攻略 开荒队伍推荐</a></li>
+<li><a href="https://botsodg-r.blogspot.com/2021/01/romance-of-three-kingdoms.html">[攻略]三國志．戰略版(Romance of the Three Kingdoms)中文版攻略(附介紹)</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="三国志战略版-s1赛季一赛季剧本介绍"><a class="header" href="#三国志战略版-s1赛季一赛季剧本介绍">三国志战略版 S1赛季（一赛季）剧本介绍</a></h1>
+<h2 id="赛季特色"><a class="header" href="#赛季特色">赛季特色</a></h2>
+<p>自有选州、组建同盟、建立国家、攻取洛阳，争夺霸业。如果是新手第一次玩三战，S1、S2、S3前三赛季都要体验，S1赛季是所有新手玩家从0开始需要经历的第一剧本。S1剧本是现在所有大多数剧本的基础地图，新手玩家可以自由选择六个州落州，称之为出生州，六个州中间有三个州资源比较丰富，称之为资源州，地图最中间是司隶，洛阳城所在，乃兵家必争之地，获得霸业首要条件占领洛阳。</p>
+<h2 id="用最简短的话来描述s1怎么玩"><a class="header" href="#用最简短的话来描述s1怎么玩">用最简短的话来描述S1怎么玩：</a></h2>
+<p>落州、抽将、3个武将组合阵容，打地发育，升级城建，加入同盟，跟随同盟打城，开资源州关口，进资源州，用最强的阵容和别的州的对手PK较量，进司隶打洛阳，最终目标拿霸业奖励，中间会遇到各种同盟背叛、被俘虏、合盟，最后活跃和高战力的玩家被整合在1个最强盟里。</p>
+<h2 id="一阵容"><a class="header" href="#一阵容">一、阵容</a></h2>
+<p>三国志战略版最核心的是橙色武将，只有抽到这个橙将，才能组合阵容上阵，或拆解战法，配将不会可以抄别人的成型阵容，但武将和战法没有这游戏就没法有太好的体验了。</p>
+<ol>
+<li>尽量同一个国家武将组成1队，有10%国家队属性加成。</li>
+<li>尽量选择兵种属性S的武将组一队。“兵种适性”属性影响武将佩戴该兵种出战时的属性，适性分为“C、B、A、S”四种，在战斗中当前兵种的适性为C级时，武将属性将调整为原来的70%;适性为B级时，武将属性调整为原来的85%;适性为A级时，武将属性调整为100%;适性为S级时，武将属性调整为原来的120%。</li>
+<li>武将尽量相互搭配、输出、控制、回血等技能相辅相成。</li>
+</ol>
+<h2 id="二打地"><a class="header" href="#二打地">二、打地</a></h2>
+<ol>
+<li>打一块地，守军重置为5分钟，即玩家要在5分钟之内打赢野地的守军。6级地开始守军为2队，第一队可以侦查，第二队系统随机。</li>
+<li>打完守军之后还要在该地块停留5分钟，美其名曰“占领”，即5分钟后该地才归属玩家。</li>
+<li>将领体力上限120，每3分钟回复1点体力，进攻一块野地需要消耗15点，算上行军和占领，进攻一块野地需要一个小时才能恢复之前状态，如果损失较大，造兵时间更长，作战间隔相应拉长。</li>
+<li>主城造兵有固定公式，具体为1兵=10木头+10铁矿+20粮食，因此可以大致估算自己能征多少兵。</li>
+<li>战法不能拆卸，只能遗忘，即拆下战法，战法回归1级，玩家返还升级战法所需战法点的80%。</li>
+<li>武将除了拆成技能，将领觉醒、升阶都可进行免费重塑，两次重塑之间cd为10天。</li>
+<li>打地，尤其是4级地开始，之前先侦查一下，确定兵种克制，兵种有枪骑盾弓四种，侦查尽管需要5分钟，但能让打地变得更加轻松愉快。</li>
+<li>新手期为玩家进服48小时内，新手期福利如下：战法100%返还，但记得在新手期快要结束时将战法搭配固定。</li>
+</ol>
+<h2 id="三资源"><a class="header" href="#三资源">三、资源</a></h2>
+<p>游戏里的资源分为“石料”、“铁矿”、“粮食”、“木材”四种，如何能够获得更多的资源。</p>
+<h3 id="资源来源一领地和屯田"><a class="header" href="#资源来源一领地和屯田">资源来源一：领地和屯田</a></h3>
+<p>领地和屯田可以生产大量的资源，其优点就是量大、稳定性足。</p>
+<ol>
+<li>
+<p>领地</p>
+<ul>
+<li>领地等级越高收获的资源产量也越大，主公要做的就是占领更多的领地，并且量力而行去打地。在打地的时候可以先侦查土地守军的兵种，然后派出克制的部队出战能有效减低战损。</li>
+<li>占领土地时也要考虑主公当前的资源种类分配问题，什么缺就多占领那种土地，比如说主公在开荒期会比较缺少石料资源，所以占领的时候可以多占领石料土地，良好的分配可以节省发育时间。</li>
+</ul>
+</li>
+<li>
+<p>屯田</p>
+<ul>
+<li>屯田需要消耗策书，在开荒期和前期还没涉足到装备时和战役时，推荐主公所有策书都用于屯田加速城建发育。</li>
+<li>高等级的土地屯田的收益会更高，所以主公最好是以高战损打下一块越级的地来屯田，不需要担心战损的消耗，因为屯田的差距偏大，很快便能回本。</li>
+<li>到了游戏中期，主公还可以在城建时集中对某一种资源升级，当资源升到20时会激活特殊效果，大幅提升该资源的屯田收益。</li>
+</ul>
+</li>
+</ol>
+<h3 id="资源来源二城建与委任"><a class="header" href="#资源来源二城建与委任">资源来源二：城建与委任</a></h3>
+<p>城建和委任是可以额外增加生产资源量，其优点就是最稳定，不会被任何事物干扰。</p>
+<ol>
+<li>
+<p>城建</p>
+<ul>
+<li>城建是每个主公接触游戏时就懂得的玩法，在城建建筑中，升级“农场”、“采石处”、“伐木场”、“冶铁台”可以增加各种资源的产量。</li>
+<li>升级同样需要消耗资源，就像是自产自用一样，建筑每5级都会迎来一次消耗的大提升，所以升级时要注意5、10、15、20、25级都是一个分水岭，建议主公优先将四种建筑升到10级开启委任官职。然后再选其中一种建筑优先升到20级解锁特殊效果，大幅提升该资源屯田的收益。</li>
+</ul>
+</li>
+<li>
+<p>委任</p>
+<ul>
+<li>委任可以小幅度提升资源资源产量的比例，其中主政官最为重要，可以增加所有资源的产量。而“木材官”、“冶铁官”、“采石官”、“粮草官”会单独增加对应的资源。</li>
+<li>建议主公在委任时选择政治属性成长最好的武将委任为主政官，而其他四项可以选择有战法加成的武将或者政治较高的武将委任。这种方式分配出来的收益效果最佳。</li>
+</ul>
+</li>
+</ol>
+<h3 id="资源来源三打野"><a class="header" href="#资源来源三打野">资源来源三：打野</a></h3>
+<p>打野也能获得资源奖励，比如每天定点刷新的木牛流马，还有随机刷新的贼寇，击杀这些野怪都可以获得不错的资源奖励。要注意的是贼寇讨伐需要消耗1个策书，如果不是为了装备材料建议直接屯田收益会更高。</p>
+<h3 id="资源来源四同盟"><a class="header" href="#资源来源四同盟">资源来源四：同盟</a></h3>
+<p>加入一个好的同盟也能获得各种资源的产量加成，当同盟攻占城池成功时，加成会逐步提升，当城池数量多起来后，加成将会达到无法忽视的高度。</p>
+<h2 id="四同盟"><a class="header" href="#四同盟">四、同盟</a></h2>
+<p>同盟的作用：资源生产增益，多种玩法获得大量铜币，攻占盟友周围领地，广结同盟好友以及庇护。</p>
+<p>同盟可以自己建立或加入他人同盟：你可以选择自己创建和小伙伴们打江山一起爽，或者加入别人的同盟一起爽！</p>
+<p>同盟贡献和等级：贡献需要捐赠资源获得。贡献越多，等级越高。等级越高，大家享受到的黑科技增益和小伙伴们就越多！捐献资源前提也记得保证自己的发育。</p>
+<p>同盟攻城：攻城上榜后，可以在城池信息攻城榜处留下自己的名字，还可以获得铜币奖励。参与攻城的所有玩家都可以获得金铢奖励。</p>
+<p>同盟科技：等级越高，享受到的科技越多。士气增益、耐久上限、解锁瞭望塔、军乐台等功能哟！</p>
+<p>同盟外交：友好，中立，敌对。简单明了而又复杂的外交舞台能够展现大家的聪明才智。不管是策反，利诱，结盟还是背叛，都将会是这个舞台上最精彩的故事！</p>
+<p>立国：同盟等级30级后可操作的选项！</p>
+<p>俘虏：非盟友玩家之间可以互相攻击，当主城耐久被打至0时，玩家主城沦陷，成为攻击方所在联盟的俘虏。这时候若我们没有盟友就只能憋屈的缴纳赎金自救。若加入同盟，同盟的小伙伴就能够帮忙攻城解救，无须缴纳赎金。要注意的一点是攻击方必须有联盟才能俘虏别的玩家，如果未加入联盟，可以攻击，但不好意思，把耐久磨没了也是白磨。俘虏的好处还有一个，那就是可以免费借地。</p>
+<p>同盟系统最关键的功能！攻略掠地，真正的争霸天下！在同盟里，你可以和大家一起攻城，甚至和其他同盟拉起一场战争！盟与盟之间的战争，州与州之间的战争！热血男儿当自强，率兵打仗争天下！</p>
+<p>最后，经历S1赛季的战斗，相信三国志战略版大家已经入门了，后面更加精彩的剧本内容等待体验。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="三国志战略版-s1-开局攻略"><a class="header" href="#三国志战略版-s1-开局攻略">三国志战略版 S1 开局攻略</a></h1>
+<h2 id="一入门攻略"><a class="header" href="#一入门攻略">一、入门攻略</a></h2>
+<h3 id="1-主公选择"><a class="header" href="#1-主公选择">1. 主公选择</a></h3>
+<p>赛季开局提供4种主公类型：明主、贤主、英主、霸主。<br />
+回答路线参考：</p>
+<ul>
+<li><strong>明主</strong>：11133</li>
+<li><strong>贤主</strong>：33333</li>
+<li><strong>英主</strong>：11111</li>
+<li><strong>霸主</strong>：11121</li>
+</ul>
+<h4 id="主公属性对比"><a class="header" href="#主公属性对比">主公属性对比</a></h4>
+<div class="table-wrapper"><table><thead><tr><th>类型</th><th>奖励道具</th><th>属性加成</th></tr></thead><tbody>
+<tr><td>明主</td><td>三文矛</td><td>武力 +4，统率 +6</td></tr>
+<tr><td>贤主</td><td>50000铜币</td><td>速度 +6</td></tr>
+<tr><td>英主</td><td>1300战法点</td><td>智力 +6</td></tr>
+<tr><td>霸主</td><td>大宛马、服方尊</td><td>速度 +4，武力 +6</td></tr>
+</tbody></table>
+</div>
+<p><strong>推荐选择：</strong> 贤主或英主</p>
+<ul>
+<li>贤主提供50000铜币，可换1000战法点及蓝将，甚至可能获得紫将。</li>
+<li>英主提供战法点，适合战法升级需求。</li>
+</ul>
+<h3 id="2-开荒武将推荐"><a class="header" href="#2-开荒武将推荐">2. 开荒武将推荐</a></h3>
+<ul>
+<li><strong>买开局号</strong>：推荐赵云、张飞、刘备、夏侯惇。</li>
+<li><strong>首充开局</strong>：
+<ul>
+<li><strong>68元</strong>：孙坚 + 孙策</li>
+<li><strong>6元</strong>：孙坚 + 关平</li>
+</ul>
+</li>
+<li><strong>0氪党</strong>：关平 + 任意紫将/蓝将（开荒速度稍慢）。</li>
+</ul>
+<h3 id="3-开荒节奏"><a class="header" href="#3-开荒节奏">3. 开荒节奏</a></h3>
+<ol>
+<li>将战法点优先用于开荒武将，提升效率。</li>
+<li>武将到5级解锁第二战法，可先用B级战法过渡（需传承蓝将并演练）。</li>
+<li>武将5级、兵力1000后开始打3级地，优先升级武将和获取资源。</li>
+<li>武将10级后分配属性点，侦察周围4级地并准备开荒。</li>
+<li>开荒期间打木牛流马资源道具，并合理分配资源与兵力。</li>
+<li>武将20级后解锁第三战法与装备系统，准备开5级地。</li>
+<li>主城升7级君王殿，确保队伍能力过渡至高级土地。</li>
+<li>武将30级主力队伍即可开6级地，优先打资源地。</li>
+</ol>
+<h3 id="4-前期发展"><a class="header" href="#4-前期发展">4. 前期发展</a></h3>
+<ol>
+<li><strong>跟随主线任务</strong>
+<ul>
+<li>开荒时期，建议各位主公可以紧跟主线任务。</li>
+<li>主线任务已经梳理了最合理的升级路线，一开始跟着主线升级设施，可以最大限度减少资源的浪费。</li>
+</ul>
+</li>
+<li><strong>加入同盟</strong>
+<ul>
+<li>加入同盟后会有同盟资源产量增益，对前期的发展会有较大帮助。</li>
+</ul>
+</li>
+<li><strong>委任内政官</strong>
+<ul>
+<li>随着任务的进行，委任功能会开放。</li>
+<li>有些武将自带内政战法，委任这些武将作为内政官时，可以有效提升城内各类资源的产量。</li>
+</ul>
+</li>
+<li><strong>名声、势力值</strong>
+<ul>
+<li>名声决定了可攻占土地的上限。</li>
+<li>名声每增加100点，领地上限可以增加1块。</li>
+<li>势力值是实力的象征，可以通过占领高级领地、建造个人建筑等方式提升。</li>
+</ul>
+</li>
+<li><strong>策书</strong>
+<ul>
+<li>策书可用于屯田、讨伐贼寇、建立营帐等，策书每小时回复一个。</li>
+<li>前期资源匮乏的情况下，不建议使用策书讨伐野怪，应尽量屯当前最高等级的资源田。</li>
+</ul>
+</li>
+</ol>
+<h3 id="5-资源获取"><a class="header" href="#5-资源获取">5. 资源获取</a></h3>
+<h4 id="一资源是否可以进行买卖"><a class="header" href="#一资源是否可以进行买卖">一、资源是否可以进行买卖</a></h4>
+<p>在游戏中，四项基础资源（木材、石料、粮食、铁矿）无法通过金锥和玉璧进行购买。</p>
+<p>玩家可以购买策书，策书具有多种功能，包括屯田、筑城、讨伐、营帐和箭塔。每个玩家每天最多可以购买三次策书。</p>
+<h4 id="二基础资源主要获取方式"><a class="header" href="#二基础资源主要获取方式">二、基础资源主要获取方式</a></h4>
+<ol>
+<li>
+<p><strong>资源建筑</strong></p>
+<p>游戏中，主城和分城均拥有四个资源建筑，分别是农场、采石场、伐木场和冶铁台。每个资源建筑能够提升相应的资源产量。建议在前期资源充足的情况下，根据任务指引升级相应的资源建筑。</p>
+</li>
+<li>
+<p><strong>资源地</strong></p>
+<p>资源地是游戏中获取资源的最基本手段，每占领一块资源地，都能根据其等级提升相应的资源产量。不同等级的资源地提供不同的产量，具体如下：</p>
+<div class="table-wrapper"><table><thead><tr><th>资源地等级</th><th>木材</th><th>铁矿</th><th>石料</th><th>粮食</th></tr></thead><tbody>
+<tr><td>1级</td><td>200</td><td>200</td><td>200</td><td>200</td></tr>
+<tr><td>2级</td><td>300</td><td>300</td><td>300</td><td>300</td></tr>
+<tr><td>3级</td><td>400</td><td>400</td><td>400</td><td>400</td></tr>
+<tr><td>4级</td><td>600</td><td>600</td><td>600</td><td>600</td></tr>
+<tr><td>5级</td><td>1300</td><td>1300</td><td>1300</td><td>1300</td></tr>
+<tr><td>6级</td><td>1500</td><td>1500</td><td>1500</td><td>1500</td></tr>
+<tr><td>7级</td><td>1700</td><td>1700</td><td>1700</td><td>1700</td></tr>
+<tr><td>8级</td><td>1900</td><td>1900</td><td>1900</td><td>1900</td></tr>
+<tr><td>9级</td><td>2100</td><td>2100</td><td>2100</td><td>2100</td></tr>
+<tr><td>10级</td><td>2300</td><td>2300</td><td>2300</td><td>2300</td></tr>
+</tbody></table>
+</div>
+<p>从表格中可以看出，5级资源地的资源产量相比4级有显著提升。前四级的资源产量差距较小，而5级资源地则应尽量占领以提升资源产量。至于6至10级的资源地，尽管资源产量有所提升，但相对较为有限，建议根据实际需求进行攻占。</p>
+</li>
+</ol>
+<h4 id="三资源是否可以进行抢夺"><a class="header" href="#三资源是否可以进行抢夺">三、资源是否可以进行抢夺</a></h4>
+<p>游戏中无法直接抢夺他人资源。如果你对其他玩家的资源地发起进攻并获胜，可以占领该资源地，从而增加自己的资源产量。如果对其他玩家的主城发起进攻并获胜，可以俘虏对方，但无法获取对方仓库中的资源。即使对方选择缴纳资源解除俘虏，资源也将由同盟获取，而非个人。</p>
+<h4 id="四资源用完了如何获取"><a class="header" href="#四资源用完了如何获取">四、资源用完了如何获取</a></h4>
+<ol>
+<li>
+<p><strong>集市交易</strong></p>
+<p>如果缺少某一单一资源而其他资源充足，可以通过升级君王殿至5级解锁集市功能。在政厅点击贸易，可以依照一定比例将其他资源转化为所需的资源。</p>
+</li>
+<li>
+<p><strong>屯田</strong></p>
+<p>选择合适的资源地，并派遣一支闲置队伍进行屯田。每次屯田消耗3本策书，时间为10分钟，可以获得与资源地类型相对应的资源。例如，石料资源地的屯田只会产出石料。资源地等级越高，屯田获得的资源越多。</p>
+</li>
+<li>
+<p><strong>等待</strong></p>
+<p>根据资源产量，资源会自动产出。玩家可以等待自然产出。</p>
+</li>
+<li>
+<p><strong>木牛流马</strong></p>
+<p>木牛流马每天在8点、14点和20点刷新，玩家可通过战胜木牛流马获得一定的资源和预备兵。如果资源不足，切记不要忘记去截击木牛流马。</p>
+</li>
+<li>
+<p><strong>讨伐贼寇</strong></p>
+<p>在霸业达到一定阶段后，地图上会刷新一些贼寇，玩家可以消耗一本策书进行讨伐。战胜5级贼寇可以获得10000资源，但奖励资源的类型是随机的。</p>
+</li>
+</ol>
+<h2 id="二进阶攻略"><a class="header" href="#二进阶攻略">二、进阶攻略</a></h2>
+<ol>
+<li>
+<p><strong>升级节奏：</strong></p>
+<ul>
+<li>20~30级：扫荡5级地</li>
+<li>30~40级：扫荡6级地</li>
+<li>35~49级：扫荡7级地</li>
+<li>40~49级：扫荡8级地</li>
+</ul>
+</li>
+<li>
+<p><strong>加入同盟：</strong></p>
+<ul>
+<li>同盟玩法能增强互动性，包括打城、迁城、对抗等活动。</li>
+</ul>
+</li>
+<li>
+<p><strong>俘虏解脱方式：</strong></p>
+<ul>
+<li>缴纳资源</li>
+<li>同盟解救</li>
+<li>紧急撤离（放弃所有领地）</li>
+</ul>
+</li>
+<li>
+<p><strong>前期资源管理：</strong></p>
+<ul>
+<li>6级地建造币厂，升到2-3级即可。</li>
+<li>每日铜币强征以加速战法升级。</li>
+</ul>
+</li>
+<li>
+<p><strong>藏兵技巧：</strong></p>
+<ul>
+<li>通过调整队伍位置藏兵</li>
+</ul>
+<blockquote>
+<p>假设您的主城有 5 个军舍位置，而您的主力队伍有 3 队。
+将这 3 队的主将分别移动到最后两个位置的副将位上，这样当敌人攻打您的主城时，主力队伍不会被直接攻击到。</p>
+</blockquote>
+<ul>
+<li>通过驻守终止藏兵</li>
+</ul>
+<blockquote>
+<p>在主城中，将部队设置为“驻守”状态，然后点击“终止驻守”。
+此时，队伍会停留在主城外表面上看仍在主城范围内，但实际上不会参与主城战斗，敌人也无法直接攻击到这些部队。</p>
+</blockquote>
+</li>
+</ol>
+<hr />
+<h2 id="三s1赛季主流阵容推荐"><a class="header" href="#三s1赛季主流阵容推荐">三、S1赛季主流阵容推荐</a></h2>
+<p><img src="season1/images/image001-17341685293952.jpg" alt="img" /></p>
+<hr />
+<h2 id="四s1结束前需做的准备备战s2"><a class="header" href="#四s1结束前需做的准备备战s2">四、S1结束前需做的准备（备战S2）</a></h2>
+<ol>
+<li>
+<p><strong>囤积资源：</strong></p>
+<ul>
+<li>满红紫卡/蓝卡</li>
+<li>3000金珠用于换战法点，1000金珠用于妙升建筑。</li>
+</ul>
+</li>
+<li>
+<p><strong>抽卡与改名：</strong></p>
+<ul>
+<li>霸业割据包：8000金珠（20次抽奖，10次保底1橙）。</li>
+<li>改名：500玉璧（赛季开始前3天可改名）。</li>
+</ul>
+</li>
+<li>
+<p><strong>赛季重置内容：</strong></p>
+<ul>
+<li>玉璧、金珠、装备、材料、武将、战法保留。</li>
+<li>其余内容（战法点、铜币、资源等）重置。</li>
+</ul>
+</li>
+<li>
+<p><strong>赛季环境变化：</strong></p>
+<ul>
+<li>S2由3~4个区合并，土地资源更加紧张。</li>
+<li>S1末期可多打野怪，准备装备。</li>
+</ul>
+</li>
+<li>
+<p><strong>核心事项：</strong></p>
+<ul>
+<li>转区：花费500金珠可在合并区间转区。</li>
+<li>S2限定武将：如孙尚香、司马懿、张辽，仅通过成就奖励或活动获取。</li>
+<li>为S2兑换战法点准备足够武将。</li>
+</ul>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="一前言"><a class="header" href="#一前言">一、前言</a></h1>
+<p>游戏的核心玩法在于后期的PVP，同盟，配将等玩法，良好的开荒，能帮助主公有一个良好的资源基底，方便快人一步。当新手玩家进入游戏时，做完新手任务后可能就不知所措了。在这里给大家明确我们游戏前期目的，就是保证自己的队伍能低损攻占五级地，尽快提升君王殿至7级（简称七本），然后有资格建造军营（单武将可携带更多兵力），我们的开荒就结束了。在未能开5以及七本之前，是新手最难度过的时期，在这里教大家在新手保护期48小时内如何快速完成开荒目标。</p>
+<p><img src="season1/images/image001.jpg" alt="img" /></p>
+<h1 id="二开荒准备"><a class="header" href="#二开荒准备">二、开荒准备</a></h1>
+<p>想要加快开荒节奏、平稳过渡到七本，我们需要做以下准备：</p>
+<ol>
+<li>存一些玉璧或金铢，用于加速建筑升级和抽取开荒武将。</li>
+<li>大约两天的充足业余时间：因为在前两天拥有新手保护，会为开荒提供便利。</li>
+</ol>
+<p>PS：提升名声到一定的节点会开放以下两种事件，合理使用可以加速开荒进程。</p>
+<ul>
+<li>【屯田】（名声到3500开放）消耗3策书来获取资源。建议屯4级地或5级地，3级地以下屯田获得的资源偏少。</li>
+<li>【木牛流马】（名声到4000开放）击败后可获得资源与预备兵数量，每天早上8点，下午2点，晚上8点刷新。</li>
+</ul>
+<p><img src="season1/images/image003.jpg" alt="img" /></p>
+<h1 id="三开荒思路"><a class="header" href="#三开荒思路">三、开荒思路</a></h1>
+<p>在教学阶段，主公将获得<strong>关平</strong>、<strong>曹休</strong>和<strong>孙乾</strong>三位武将，合理使用可显著提升开荒效率。</p>
+<p>关平：属性全面，骑兵、盾兵、枪兵适性均为A级，非常适合开荒。被动战法“奋突”有概率提升攻击并对敌军造成高额伤害，是前期攻占高级地块的优先选择。</p>
+<p>曹休：武力属性较高，适合作为战法传承武将。传承战法“挥砍”满级后对单体造成125%兵刃伤害。</p>
+<p>孙乾：辅助型武将，提供增益效果，适合作为初期的辅助角色。</p>
+<h2 id="占地思路"><a class="header" href="#占地思路">占地思路</a></h2>
+<ol>
+<li>
+<p>打空地、一级地和二级地随便上队伍基本无伤，但也别过多打低级地，武将5级左右开三级地，合理运用体力（武将自带120体力，新手期出征一次扣8点，非新手期15点）。</p>
+<p><img src="season1/images/image005.jpg" alt="img" /></p>
+</li>
+<li>
+<p>勤用侦查（推荐3级地开始侦查），探兵力兵种，根据骑→盾→弓→枪→骑的克制顺序合理调整兵种。</p>
+</li>
+<li>
+<p>部队每出征一段距离，就会失去部分士气，士气决定了战斗时造成的伤害，队伍停留休息会逐渐恢复士气，回主城或者调动进己方营帐会回满士气，所以尽量不要攻占太远距离的野地，若迫不得已，先行军至地皮上，待体力恢复再战。</p>
+<pre><code class="language-admonish warning title=&quot;注意&quot;">每行军1格就会消耗一点士气，不满100的情况下战斗会降低造成的伤害
+</code></pre>
+</li>
+<li>
+<p>若领地已满或暂时无地可打（没有低级野地或打不赢高级地），可先放弃低级地，或者反复扫荡低级地提升武将经验，合理运用体力。</p>
+</li>
+<li>
+<p>普通阵容注意兵种克制，尽可能多兵力去开，降低损失，5级地9000兵力，强力阵容推荐5000兵力开，普通阵容6000兵力，再带一队3000兵力补刀以防万一；占地翻车在前期太伤，新手期虽然60％资源返还，但你比别人又慢了一步。</p>
+<p>4级地守军5400</p>
+<p><img src="season1/images/image007.jpg" alt="img" /></p>
+<p>5级地守军9000</p>
+<p><img src="season1/images/image009.jpg" alt="img" /></p>
+<p>若获得强力的开荒将代替孙坚孙策，如夏侯惇，乐进，太史慈等，自带战法稳定且可一开场便能触发的，可降低一部分兵力开四级地或无级地。</p>
+<pre><code class="language-admonish title=&quot;补刀技巧&quot;">当你的队伍出征一块资源地时，可能会有战败的可能，当失败时候，主公的队伍会返回主城，而敌方的队伍则需要3分钟恢复至正常状态，补刀则意味着需要3分钟内再次派一个队伍出战。
+</code></pre>
+<pre><code class="language-admonish title=&quot;伤兵&quot;">每场战斗都会产生伤兵，若继续下场战斗，伤兵不会上阵，因次建议每次战斗後即时回城恢复
+</code></pre>
+</li>
+</ol>
+<h2 id="城建升级思路"><a class="header" href="#城建升级思路">城建升级思路</a></h2>
+<p>开荒期领地少，资源有限，为了尽快七本，一切跟着任务走（只做主线任务，副线加同盟也可提高资源产量，其余副线不做）。差什么资源就多占领对应资源产量的土地，其中石料只会用于升级建筑，粮食只会用于征兵。不断扫荡低级地，提升武将等级，高级将领能带更多的兵，不让体力浪费，根据任务主线走，第一天结束（开荒12小时算）时君王殿能升至6级，开5级地（优先石头地）；7级需要28w8的石料，需将仓库升级至9级（30w容量），期间不断开5级地、屯田高级石头地，新手期结束前一定能开军营。</p>
+<p><img src="season1/images/image011.jpg" alt="img" /></p>
+<pre><code class="language-admonish warning title=&quot;注意事项&quot;">1.切记不要胡乱升级建筑，只跟任务里面的主线走；附上开启七本之前各大建筑升级表。
+
+内政：仓库9级农场/采石场/伐木场/冶铁台7级民居7级。
+
+军事：军舍3级征兵处3级武/谋/防/速3级点将台1级。
+
+2、除主力队以外，可养一至两队战斗力稍弱的副队，用于铺路、屯田或拦截木牛流马；主力队不要浪费体力来做这些事情。
+</code></pre>
+<h1 id="四资源用完了如何获取-1"><a class="header" href="#四资源用完了如何获取-1">四、资源用完了如何获取</a></h1>
+<h2 id="1屯田"><a class="header" href="#1屯田">1.屯田</a></h2>
+<p>选择相应的资源地，随便派遣一支闲置的队伍，消耗三本策书进行屯田。屯田一次消耗10分钟，10分钟后可以获得与该资源地类型相同的资源，即石料资源地屯田只会产出石料，而非其他资源。资源地等级越高，屯田所获得的资源越多。</p>
+<h2 id="2等待"><a class="header" href="#2等待">2.等待</a></h2>
+<p>依据资源产量，每小时会产出相应的资源。只需要耐心等待一段时间，就能获得资源，然后利用资源发展兵力。</p>
+<h2 id="3-木牛流马"><a class="header" href="#3-木牛流马">3. 木牛流马</a></h2>
+<p>木牛流马于每天8点、14点、20点刷新，战胜能获得一定的资源和预备兵。如果资源缺少，切记别忘了去拦截木牛流马。</p>
+<h2 id="4讨伐贼寇"><a class="header" href="#4讨伐贼寇">4.讨伐贼寇</a></h2>
+<p>霸业到达一定阶段后，地图上面会刷新出来部分贼寇，消耗一本策书可以对他们进行讨伐。5级贼寇战胜可以获得10000资源，但是类型随机。故而这种获取方式不是很值得提倡，毕竟不一定会获得需要的资源。</p>
+<h2 id="5贸易"><a class="header" href="#5贸易">5.贸易</a></h2>
+<p>如果是缺少单一资源，其他资源充足的情况下，那么能在君王殿升至5级时，解锁集市。然后点击政厅，再点击贸易。然后就可以依据一定比例，将相应的资源进行转换，以获取所需的资源进行利用。</p>
+<h2 id="试炼"><a class="header" href="#试炼">试炼</a></h2>
+<p>每天晚上0点会刷新试炼，试炼会随机给到一些资源，难度越高给的资源越多。</p>
+<h1 id="五新手开荒战法推荐"><a class="header" href="#五新手开荒战法推荐">五、新手开荒战法推荐</a></h1>
+<p><img src="season1/images/image013.jpg" alt="img" /></p>
+<h1 id="六开荒武将推荐"><a class="header" href="#六开荒武将推荐">六、开荒武将推荐</a></h1>
+<h2 id="孙坚"><a class="header" href="#孙坚">孙坚：★★★★☆</a></h2>
+<p><img src="season1/images/image015.jpg" alt="img" /></p>
+<p>评价：</p>
+<p>1，属性基础高，成长也不低（从五级地开始，谋略输出见长的野地武将逐渐变多，一些高武力低智商的武将，如吕布张飞之流，相对统率、智力均衡发展的孙坚，简直是脆皮鸡）</p>
+<p>2，兵种适应性优秀多变；</p>
+<p>3，战法瞬发，基础50%战法发动概率，群体伤害，嘲讽锦上添花；</p>
+<p>综述：平民开荒的最佳选择。</p>
+<h2 id="张飞"><a class="header" href="#张飞">张飞：★★★★★</a></h2>
+<p><img src="season1/images/image017.jpg" alt="img" /></p>
+<p>评价：</p>
+<p>1.速度属性优秀，高于大多输出武将，弱智；</p>
+<p>2.兵种适应性高；</p>
+<p>3.被动战法输出稳定，全体伤害，附加的破防效果前期不明显（此时很多武将防御都不高），后期的破防潜力可圈可点。张飞前四回合中，每两回合必定造成一次全体伤害，在关键回合拥有更稳定的伤害，但是要注意一点：关平的自带战法“奋突”持续时长为一回合，而高速的张飞指挥战法释放，是快于关平的奋突以及大多武将带的落凤，它们持续时间都低于两回合，不足以形成张飞破防的前提；后期关羽、张飞的配合可以完美兼容二者的战法，“盛气凌敌”战法几乎与张飞是绑定使用的。</p>
+<p>4.五虎的缘分以及强度都挺高，预计桃园组合将是蜀国最强力的国家队。</p>
+<p>综述：开荒稳定，后期转型纵享丝滑，6御相比7御更加适合作为开荒武将。除了弱智，算得上完美的武将，即便到后期，能和大哥、二哥组成桃园组合，依旧是爸爸级别的优先度。</p>
+<h2 id="刘备"><a class="header" href="#刘备">刘备：★★★★★</a></h2>
+<p><img src="season1/images/image019.jpg" alt="img" /></p>
+<p>评价：</p>
+<p>1.完美的兵种适应性，优秀的三维，速度略低，不适合做先手控制，更适合后手辅助。</p>
+<p>2.核心战法“仁德载世”，是跨级打地的根本——刘备虚弱和治疗本身就非常不错，百分百的发动概率更是完美，符合开荒求稳的核心诉求。</p>
+<p>综述：开荒最强辅助，没有之一。尤其在攻打6级以上土地时作用更加明显，后期也可组成桃园、奶枪等强势阵容，有的话一定要练起来。</p>
+<h2 id="法正"><a class="header" href="#法正">法正：★★★★★</a></h2>
+<p><img src="season1/images/image021.jpg" alt="img" /></p>
+<p>评价：</p>
+<p>1.兵种适应性在初期可以说是百搭，甚至在攻城队没有出来的时候，法正顶上也可以。</p>
+<p>2.奶量高，高速的免伤buff强，35%的看脸几率不及刘备稳定。</p>
+<p>注意：很多的新人玩家在选择奶妈或者回血战法时（对，点名你——A级战法自愈），容易忽视武将的基础速度和战法类型，战法类型会决定释放顺序:被动＞指挥＞主动＞普攻＞突击。低速肉盾，例如孙坚、曹仁携带自愈可抗伤然后回血，但是像夏侯惇，70+的速度，携带回血战法就尴尬了。</p>
+<p>综述：性价比极高的选择，前期开荒小助手。</p>
+<h2 id="李典"><a class="header" href="#李典">李典：★★★☆</a></h2>
+<p><img src="season1/images/image023.jpg" alt="img" /></p>
+<p>评价:</p>
+<p>1.前期开荒最强指挥战法，直接提升全队三个人的14-28武力，智力值，也就是说每个武将的普攻，技能带来的伤害会有至少10%以上的提升。</p>
+<p>2.需要注意的是，指挥战法在武将溃灭后将无法提供增益效果，所以改版之前给李典分配1个兵就行的打法现在实用度变低了，建议多带几个兵，增加生存能力。</p>
+<p>综述：3统御值的武将，全队增益效果，能帮助开荒队带来质的提升。</p>
+<h1 id="七开荒阵容推荐"><a class="header" href="#七开荒阵容推荐">七、开荒阵容推荐</a></h1>
+<p><img src="season1/images/image025.jpg" alt="img" /></p>
+<h3 id="1固定伤害奶型开荒"><a class="header" href="#1固定伤害奶型开荒">（1）固定伤害+奶型开荒</a></h3>
+<p>为什么会说固定伤害呢？因为主动战法几率问题，比如吕布开荒，吕布不放战法，那就战损高的很，如果放战法了二回合解决战斗。所以这个时候固定伤害战法可以把开荒稳定性大大提高比如说，张飞燕人咆哮就是很好的例子。</p>
+<p><img src="season1/images/image027.jpg" alt="img" /></p>
+<h3 id="2兵刃伤害奶型"><a class="header" href="#2兵刃伤害奶型">（2）兵刃伤害+奶型</a></h3>
+<p>开荒的核心就是兵刃伤害、普攻伤害。因为每个将都会进行普攻，而且野地的将基本没有缴械战法（二赛季不知道有无改变），所以侧重于兵刃伤害的将开荒是十分好的选择，比如太史慈、马超。</p>
+<p><img src="season1/images/image029.jpg" alt="img" /></p>
+<p><img src="season1/images/image031.jpg" alt="img" /></p>
+<h3 id="3免控奶型"><a class="header" href="#3免控奶型">（3）免控+奶型</a></h3>
+<p>赵云自身免控，可以用来做完美的输出将，无惧任何Debuff可以打出十足的输出。</p>
+<p><img src="season1/images/image033.jpg" alt="img" /></p>
+<h3 id="4新手平民型"><a class="header" href="#4新手平民型">（4）新手平民型</a></h3>
+<p>适合所有新手的阵容，挥砍战法可在曹休传承出来。</p>
+<p><img src="season1/images/image035.jpg" alt="img" /></p>
+<h1 id="八其它事项"><a class="header" href="#八其它事项">八、其它事项</a></h1>
+<h2 id="推荐大力培养的四星武将"><a class="header" href="#推荐大力培养的四星武将">推荐大力培养的四星武将</a></h2>
+<ul>
+<li>弓兵：韩当、潘璋、蒋钦、徐盛、张任、朱儁</li>
+<li>枪兵：张绣、皇甫嵩、张梁、丁奉</li>
+<li>盾兵：郭淮、文聘、逢纪</li>
+</ul>
+<h2 id="签到获得武将解析"><a class="header" href="#签到获得武将解析">签到获得武将解析</a></h2>
+<ol>
+<li>庞德：主要是为了拆战法暂避其锋，庞德自身算一个三流武将，但是他的传承战法是妥妥的T1级别。</li>
+<li>李典：最佳工具人武将，3御武将中只有5星武将蔡文姬能跟他争一争开荒期工具人的位置了。</li>
+<li>纪灵：看情况拆战法或者当材料。</li>
+<li>甄姬：全游戏第二高魅力的武将，其本身的内政作用大于传承战法。</li>
+<li>袁绍：良心武将，群弓阵容的代表性武将，非常适合平民。袁绍+朱儁基本上就构成群弓体系了，平民玩家一定要练起来。</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="强力开荒队"><a class="header" href="#强力开荒队">强力开荒队</a></h1>
+<h2 id="一刘备张飞赵云李典蔡文姬"><a class="header" href="#一刘备张飞赵云李典蔡文姬">一、刘备+张飞（赵云）+李典（蔡文姬）</a></h2>
+<ul>
+<li><strong>觉醒前（13御）</strong>：刘备主将盛气凌敌；张飞（赵云）横扫千军</li>
+<li><strong>觉醒后（7本16御）</strong>：刘备主将盛气凌敌+陷阵营；张飞（赵云）横扫千军+纵兵劫掠（落凤、瞋目横矛）；李典（蔡文姬）御敌屏障+陷阵营（刘备或赵云可以改杯蛇鬼车）</li>
+</ul>
+<p><strong>点评</strong>：这队S1当之无愧的开荒王，一个能奶一个能输出，开荒方面张飞比赵云稳定。总体思路是单将分别刷3过任务，等4本13御合体，这里要求体力及武将等级基本相同。6本15御的时候，可以带2御工具人挂兵种和阵法开6。后期转型桃园或者众蜀枪。</p>
+<h2 id="二赵云张飞李典蔡文姬"><a class="header" href="#二赵云张飞李典蔡文姬">二、赵云+张飞+李典（蔡文姬）</a></h2>
+<ul>
+<li><strong>觉醒前（12御）</strong>：赵云主将横扫千军；张飞盛气凌敌</li>
+<li><strong>觉醒后（6本15御）</strong>：张飞主将盛气凌敌+横扫千军；赵云杯蛇鬼车（智）+落凤；李典（蔡文姬）御敌屏障+陷阵营</li>
+</ul>
+<p><strong>点评</strong>：张飞主将更好打出破甲，赵云杯蛇输出兼回复，新手开荒期全智加点。总体思路是单将分别刷3过任务，3本12御之后合体。这队后期转型五虎枪、刘张赵等。</p>
+<h1 id="单刷开荒队"><a class="header" href="#单刷开荒队">单刷开荒队</a></h1>
+<h2 id="一赵云单刷"><a class="header" href="#一赵云单刷">一、赵云单刷</a></h2>
+<ul>
+<li><strong>觉醒前</strong>：赵云援救</li>
+<li><strong>觉醒后</strong>：赵云援救+后发制人</li>
+</ul>
+<p><strong>点评</strong>：赵云属性点可以全加智力，主要就是靠援救奶起来。能不能打完全看援救有没有触发出来，这里切记单刷云不带任何武将，工具人也只能带1兵。开荒无限平没关系，单刷经验多。</p>
+<h2 id="二夏侯惇单刷"><a class="header" href="#二夏侯惇单刷">二、夏侯惇单刷</a></h2>
+<ul>
+<li><strong>觉醒前</strong>：鲁莽</li>
+<li><strong>觉醒后</strong>：鲁莽+后发制人</li>
+</ul>
+<p><strong>点评</strong>：十分需要鲁莽，触发后配合主战法及后发制人输出，等于有输出有奶。</p>
+<h1 id="黑科技队"><a class="header" href="#黑科技队">黑科技队</a></h1>
+<h2 id="袁绍朱儁李典蔡文姬"><a class="header" href="#袁绍朱儁李典蔡文姬">袁绍+朱儁+李典（蔡文姬）</a></h2>
+<ul>
+<li><strong>觉醒前（12御）</strong>：袁绍百炼成钢（文武双全）；朱儁坐守孤城（无当飞军）</li>
+<li><strong>觉醒后（6本15御）</strong>：袁绍百炼成钢（文武双全）+天降火雨（骑虎难下）；朱儁坐守孤城+百炼成钢（或任意谋略输出）；李典（蔡文姬）御敌屏障+援救（可不觉醒）</li>
+</ul>
+<p><strong>点评</strong>：这队之所以黑科技，武将获取难度相对较低，百炼成钢是一个非常好的A级提升四维的战法，演练还能两人使用，朱儁自带战法稳定输出，强度比不上前面开荒的，但也能平稳度过新手期7本。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="赛季2"><a class="header" href="#赛季2">赛季2</a></h1>
+<p>内容内容参考如下</p>
+<ul>
+<li><a href="https://forum.gamer.com.tw/C.php?bsn=36815&amp;snA=2783">【攻略】S2開荒攻略</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="s2赛季的一些基本变化与注意事项"><a class="header" href="#s2赛季的一些基本变化与注意事项">S2赛季的一些基本变化与注意事项</a></h1>
+<h2 id="1-地图与土地守军"><a class="header" href="#1-地图与土地守军">1. 地图与土地守军</a></h2>
+<ul>
+<li>S2赛季地图与S1一样，格局和格数没有变化，土地守军大幅加强，所以打地记得侦查。</li>
+<li>新手期48小时内行动一次只要8体力，武将下阵可以返预备兵，洗战法后战法点也是100%退还！所以48小时新手期是黄金发育期！</li>
+</ul>
+<h2 id="2-开局抽卡"><a class="header" href="#2-开局抽卡">2. 开局抽卡</a></h2>
+<ul>
+<li>开局可以抽霸业（割据，历战）卡包是限时48小时，抽一次398金猪，可以抽20次，10次保底一橙将，20抽就是保底2个橙将。</li>
+<li>（霸业卡包和赛季成就卡包开服后需要在邮件里领，领完后才开始限时48小时，所以你想晚点抽的话，邮件可以晚点再领）。</li>
+</ul>
+<h2 id="3-改名与头像框"><a class="header" href="#3-改名与头像框">3. 改名与头像框</a></h2>
+<ul>
+<li>重名的系统免费送一张改名卡，如果自己花钱改名需要500玉璧，开服后三天内可以改名。</li>
+<li>（想免费改名的可以在合区公告出来前在自己上下区建个同名的小号，要记得每天上去玩几下不然会被系统收回）。</li>
+<li>头像框需要等到S3赛季，在S3功勋商店花500金猪更换。</li>
+</ul>
+<h2 id="4-战法事件玩法"><a class="header" href="#4-战法事件玩法">4. 战法事件玩法</a></h2>
+<ul>
+<li>战法那里多了一个事件玩法，消耗指定武将获得战法（记得开服前把需要换的事件战法的紫卡，蓝卡都锁了，避免误操作给转化掉了）。</li>
+</ul>
+<h2 id="5-名声与创建联盟"><a class="header" href="#5-名声与创建联盟">5. 名声与创建联盟</a></h2>
+<ul>
+<li>初始名声3000，需要刷500声望，要达到3500及20块地才可以创建联盟。</li>
+</ul>
+<h2 id="6-兵书系统"><a class="header" href="#6-兵书系统">6. 兵书系统</a></h2>
+<ul>
+<li>S2赛季新推出了兵书系统，完成霸业英雄集结（四级城被攻陷开启），一般48小时新手期结束后当天下午会开启。</li>
+<li>武将30级可以解锁兵书，橙色武将解锁需要10张紫卡，紫色武将解锁需2张紫卡，第一本兵书开启需6w铜币，第二本需要3w铜币。</li>
+<li>所以一个橙将需要10张紫卡和9W铜币开启兵书！（S2赛季紫卡需要很大，记得多准备点）</li>
+<li>PS：兵书系统开启后，第一格的兵书选项（作战、虚实、军形、九变）在20级就可以开启，开启后武将每进阶1次可使自身造成的伤号及治疗效果提高2%，受到的伤害降低2%。</li>
+<li>这对于满红号来说提升很大，记得练二队三队的时候20级就先开启第一格的兵书选项！</li>
+</ul>
+<h2 id="7-转服规则"><a class="header" href="#7-转服规则">7. 转服规则</a></h2>
+<ul>
+<li>S2一般由3~4个服组成的区，土地资源比较紧张，开荒期就更重要了。</li>
+<li>赛季末结算前可以花500金珠转服！可以向你一组的服务器间互相转服（比如S2由100服，101服，102服组成的，那么赛季末101服的可以申请转服到102或者100服）如果对方服务器爆满，那就不能转服了，所以大家决定好转服的话，一开启转服就要马上转。</li>
+<li>S2结束后匹配到的服务器会重新分开，S3会重新匹配新的对手（所以S2的对手在S3是不会碰面的，但是S4开始是有可能重新匹配到一起的，到时候再有仇报仇，有怨报怨）。</li>
+</ul>
+<h2 id="8-s2赛季武将"><a class="header" href="#8-s2赛季武将">8. S2赛季武将</a></h2>
+<ul>
+<li>S2的武将后面赛季是抽不到的，就是几乎绝版了。（后面成就卡包会出，但只是有机会抽到一个）。</li>
+</ul>
+<h2 id="9-冲榜奖励活动"><a class="header" href="#9-冲榜奖励活动">9. 冲榜奖励活动</a></h2>
+<ul>
+<li>S2没有7天冲榜奖励活动了，攻城略地3000金珠奖励和一骑当千活动还在。</li>
+</ul>
+<h2 id="10-功勋商店"><a class="header" href="#10-功勋商店">10. 功勋商店</a></h2>
+<ul>
+<li>S3赛季开始新增功勋商店（可以用功勋换道具特技，战法点，粮食）！</li>
+<li>在S2赛季中，获取战功、参与攻城、抢占领土、拆除耐久、完成成就等行为，都将折算成功勋在S3赛季初发放。</li>
+<li>（功勋没用完可以累积到下赛季）具体的计算比例由于计算公式比较复杂，目前还未公布，不过根据自身跟盟友提供的数据可以推测一些，10万战大概等于100点功勋（超过100万战功给功勋就很少，有可能战功换功勋的上限就是100万），10000成就大概等于100点功勋，还有翻地，攻城，拆除耐久值也会增加很多功勋，所以平民玩家战功不够的话就尽量多参与攻城活动，多翻翻地，拆拆耐久值。</li>
+<li>基本功勋至少也有600多。</li>
+</ul>
+<h2 id="11-开区准备"><a class="header" href="#11-开区准备">11. 开区准备</a></h2>
+<ul>
+<li>S2开区需要准备的金猪A，7960金珠用于抽霸业，割据卡包B，2000~3000金猪用于双倍战法转化C，准备1000左右金猪留着秒升科技建筑。</li>
+</ul>
+<h2 id="12-新增武将"><a class="header" href="#12-新增武将">12. 新增武将</a></h2>
+<ul>
+<li>S2新增武将：司马懿，张辽，庞统，孙尚香，张纮，马云禄，张姬，陈宫。</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="开荒前准备"><a class="header" href="#开荒前准备">开荒前准备</a></h1>
+<h2 id="1-s2-开局保留与重置内容详解"><a class="header" href="#1-s2-开局保留与重置内容详解">1. S2 开局保留与重置内容详解</a></h2>
+<h3 id="保留内容"><a class="header" href="#保留内容">保留内容</a></h3>
+<ul>
+<li><strong>玉璧、金銖数量</strong></li>
+<li><strong>装备、材料</strong></li>
+<li><strong>武将（包括进阶数和觉醒状态）</strong></li>
+<li><strong>战法、战法演练进度</strong></li>
+</ul>
+<h3 id="重置内容"><a class="header" href="#重置内容">重置内容</a></h3>
+<ul>
+<li>名声</li>
+<li>资源</li>
+<li>铜币</li>
+<li>战法点</li>
+<li>城建设施等级</li>
+<li>同盟关系</li>
+<li>任务、试炼、成就</li>
+<li>首储奖励</li>
+</ul>
+<hr />
+<h2 id="2-武将与重塑说明"><a class="header" href="#2-武将与重塑说明">2. 武将与重塑说明</a></h2>
+<h3 id="武将保留与重置规则"><a class="header" href="#武将保留与重置规则">武将保留与重置规则</a></h3>
+<ul>
+<li><strong>保留：</strong>
+<ul>
+<li>所有抽到的武将，包括其进阶数和觉醒状态。</li>
+</ul>
+</li>
+<li><strong>重置：</strong>
+<ul>
+<li>武将等级、经验、配点、自带战法等级、已学习战法。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>注意：</strong> 新赛季需要重新培养武将，但进阶和觉醒状态保留。重塑可以恢复用于进阶的武将，尤其是 S2 赛季开始后部分战法需通过兑换获得的情况。</p>
+</blockquote>
+<h3 id="重塑机制"><a class="header" href="#重塑机制">重塑机制</a></h3>
+<ul>
+<li>重塑后的武将等级不变，但每次重塑有 <strong>10 天冷却时间</strong>。</li>
+<li>需提前重塑重要武将以便兑换战法。</li>
+</ul>
+<hr />
+<h2 id="3-战法点储备与使用"><a class="header" href="#3-战法点储备与使用">3. 战法点储备与使用</a></h2>
+<h3 id="战法点储备技巧"><a class="header" href="#战法点储备技巧">战法点储备技巧</a></h3>
+<ul>
+<li>进入 S2 赛季时，战法点将 <strong>全部重置</strong>，建议在赛季结束前开始囤积。</li>
+<li><strong>建议：</strong>
+<ul>
+<li>不要急于转化武将以获取战法点。</li>
+<li>进阶三星武将（尽量变成三红勾玉）来节省武将栏位。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>武将上限为 200 个</strong>，多余的三星武将建议直接进阶。</p>
+</blockquote>
+<h3 id="赛季前准备"><a class="header" href="#赛季前准备">赛季前准备</a></h3>
+<ul>
+<li>提前 <strong>1 个月</strong> 开始囤积三星武将和铜币。</li>
+<li>赛季末尽量花光所有铜币，避免浪费。</li>
+</ul>
+<hr />
+<h2 id="4-金銖储备与使用"><a class="header" href="#4-金銖储备与使用">4. 金銖储备与使用</a></h2>
+<h3 id="储备建议"><a class="header" href="#储备建议">储备建议</a></h3>
+<ul>
+<li>
+<p>S2 赛季开局有 <strong>霸业卡包</strong>：</p>
+<ul>
+<li>单次抽取消耗 <strong>398 金銖</strong>。</li>
+<li>可抽 <strong>20 次</strong>，每次必得良将或名将。</li>
+<li><strong>满抽需 7960 金銖</strong>（基本保底 2 橙将，提早抽到可收手）。</li>
+</ul>
+</li>
+<li>
+<p>如果战法点不足，也可使用金銖转化战法点。</p>
+</li>
+<li>
+<p><strong>月卡党建议：</strong></p>
+<ul>
+<li>在赛季种田期停止半价武将抽卡，积攒金銖。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="5-赛季奖励注意事项"><a class="header" href="#5-赛季奖励注意事项">5. 赛季奖励注意事项</a></h2>
+<p>赛季奖励的条件可以通过以下路径查看：<br />
+主页面 → 更多 → 霸业 → 右下角【赛季说明】。</p>
+<h3 id="基本条件"><a class="header" href="#基本条件">基本条件</a></h3>
+<ul>
+<li>君王殿需升至 <strong>10 等</strong>。</li>
+</ul>
+<hr />
+<h2 id="6-开荒重点内容整理"><a class="header" href="#6-开荒重点内容整理">6. 开荒重点内容整理</a></h2>
+<h3 id="武将战法点储备"><a class="header" href="#武将战法点储备">武将（战法点）储备</a></h3>
+<ul>
+<li><strong>锁定换事件战法和重要武将</strong>：避免误操作被转化。</li>
+<li><strong>金猪转化战法点推荐</strong>：
+<ul>
+<li>铜币转化：约 <strong>1w7-1w9</strong> 战法点。</li>
+<li>金猪转化：约 <strong>3w4-3w8</strong> 战法点（基本满足 4 个 5 星 10 级战法需求）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="推荐锁定武将"><a class="header" href="#推荐锁定武将">推荐锁定武将</a></h3>
+<ul>
+<li>李典、郭淮、张宝、朱儁（四星神将）。</li>
+<li>张任（与袁绍、朱儁搭配，适合平民群弓组合）。</li>
+<li>各类内政武将、事件战法武将、器械 S 紫卡。</li>
+</ul>
+<hr />
+<h2 id="7-装备战马宝物储备"><a class="header" href="#7-装备战马宝物储备">7. 装备、战马、宝物储备</a></h2>
+<h3 id="装备准备"><a class="header" href="#装备准备">装备准备</a></h3>
+<ul>
+<li><strong>推荐打野：</strong>
+<ul>
+<li><strong>8 级野怪：50% 爆紫色材料</strong>。</li>
+<li><strong>9 级野怪：100% 爆紫色材料</strong>。</li>
+<li><strong>10 级野怪：100% 爆紫色材料，5% 概率爆装备图纸</strong>。</li>
+</ul>
+</li>
+<li><strong>战马与宝物获取：</strong>
+<ul>
+<li>每天坚持训马和寻访，积累橙马和宝物。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>注意：</strong> 同一装备特技在同一武将身上只能生效一次。
+可以参考下述战报截图
+<img src="season2/images/3f8e98344dc6048d00e4b0be258e4836.jpeg" alt="战报截图" /></p>
+</blockquote>
+<hr />
+<h2 id="8-优秀的开荒技能"><a class="header" href="#8-优秀的开荒技能">8. 优秀的开荒技能</a></h2>
+<h3 id="s-级技能"><a class="header" href="#s-级技能">S 级技能</a></h3>
+<p>盛气凌敌、横扫千军、陷阵营、八门、杯蛇、瞋目横矛、破阵、夺魄、暂避、兵无常势。</p>
+<h3 id="a-级技能"><a class="header" href="#a-级技能">A 级技能</a></h3>
+<p>传檄宣威（新）、御敌屏障、落凤、纵兵劫掠、坐守孤城、轻勇飞燕、暴敛四方。</p>
+<h2 id="9-事件战法列表"><a class="header" href="#9-事件战法列表">9. 事件战法列表</a></h2>
+<p><img src="season2/images/57505e971fff09584afd8db1d5783804.jpeg" alt="事件战法" />
+<img src="season2/images/e4898be3c858c65fd7d93add7073c7cb.jpeg" alt="战法兑换" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="开荒武将推荐"><a class="header" href="#开荒武将推荐">开荒武将推荐</a></h1>
+<h2 id="输出类"><a class="header" href="#输出类">输出类：</a></h2>
+<ul>
+<li>赵云，张飞，甘宁，太史慈，乐进，马超，夏侯渊，孙坚，夏侯惇</li>
+</ul>
+<h2 id="奶妈辅助类"><a class="header" href="#奶妈辅助类">奶妈辅助类：</a></h2>
+<ul>
+<li>刘备，曹操，华佗，法正，蔡文姬，祝融，左慈</li>
+</ul>
+<h2 id="低统御第三人工具人选择"><a class="header" href="#低统御第三人工具人选择">低统御第三人（工具人）选择：</a></h2>
+<ul>
+<li>2御白卡，李典，张宝，蔡文姬，左慈，华佗，郭淮，黄月英，法正
+（工具人的定义是只需要带一个兵，带上阵法或兵种技能，死了也没损失，只是会分摊些经验）
+（改版后武将死亡后，指挥战法会失效，不过阵法跟兵种的依然有效）</li>
+</ul>
+<h2 id="开荒前考虑"><a class="header" href="#开荒前考虑">开荒前考虑</a></h2>
+<p>开荒前请考虑好要转型的阵容，比如你一队要用桃园队，就直接刘备张飞开荒，打算玩奶枪（刘备赵云诸葛亮）就用刘备赵云开荒，千万别开到中途再转阵容，那样会非常伤，很拖节奏！</p>
+<h2 id="1-刘备张飞最稳的开荒队伍"><a class="header" href="#1-刘备张飞最稳的开荒队伍">1. 刘备+张飞（最稳的开荒队伍）</a></h2>
+<ul>
+<li>20级前，刘备：盛气或陷阵，张飞：横扫千军</li>
+<li>20级后，刘备：盛气+陷阵（杯蛇，八门） 张飞：卧薪（落凤，瞋目横矛）+横扫</li>
+<li>后面打六级地带3御武将蔡文姬＞李典＞张宝（蔡文姬跟李典哪个红度更高就上哪个）</li>
+<li>刘备：夺魄+杯蛇。张飞：卧薪（落凤，瞠目横矛）+横扫 蔡文姬：盛气+陷阵（想省战法点的话，刘备跟蔡文姬的技能可以调换一下，这样成型后，刘备的战法可以不用再调）</li>
+<li>后期可以考虑上赵云或者关羽，
+<ul>
+<li>19御可以直接上赵云，开荒稳定性比上关羽好。</li>
+<li>20御上关羽可以直接成型桃园队，不过开荒效率会比上赵云慢。（因为要憋20御大概会比赵云晚一天时间成型）</li>
+</ul>
+</li>
+<li>成型后，刘备：盛气+陷阵。张飞：落凤+横扫 赵云：破阵+卧薪（所向）上关羽就带白眉+所向</li>
+</ul>
+<h2 id="2-刘备赵云开荒效率仅次于刘备张飞后期20御直接上诸葛亮转型奶枪"><a class="header" href="#2-刘备赵云开荒效率仅次于刘备张飞后期20御直接上诸葛亮转型奶枪">2. 刘备+赵云（开荒效率仅次于刘备张飞，后期20御直接上诸葛亮，转型奶枪）</a></h2>
+<ul>
+<li>20级前，刘备：杯蛇或盛气 赵云：横扫千军</li>
+<li>20级后，刘备：杯蛇+盛气 赵云：卧薪尝胆（落凤）+横扫</li>
+<li>后面打六级地上3御武将蔡文姬＞李典＞张宝（看红度选择，满红李典跟白板蔡文姬就选李典）</li>
+<li>刘备：夺魄+杯蛇，赵云：卧薪尝胆（落凤）+横扫 蔡文姬：盛气+八门（骑兵）</li>
+<li>刘备：夺魄+杯蛇，赵云：卧薪尝胆（落凤）+横扫 李典：盛气+陷阵（盾兵）</li>
+<li>憋到20御直接上诸葛亮，组成奶枪，前期开荒跟打架都十分凶猛！
+<ul>
+<li>诸葛亮：夺魄+杯蛇，赵云：卧薪尝胆（落凤）+横扫，刘备：八门+白毦兵（枪兵）</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-赵云张飞双输出"><a class="header" href="#3-赵云张飞双输出">3. 赵云+张飞（双输出）</a></h2>
+<ul>
+<li>20级前，赵云：横扫千军，张飞：盛气</li>
+<li>20级后，赵云：卧薪（破阵）+杯蛇（赵云由于1技能智力加成很高，完全可以当个奶妈使用）</li>
+<li>张飞：盛气+横扫</li>
+<li>7本可以上法正，带陷阵营。组盾兵队，陷阵营这个技能很适合开荒。
+<ul>
+<li>赵云：卧薪（破阵）+杯蛇 张飞：落凤+横扫 法正：盛气+陷阵（盾兵）</li>
+</ul>
+</li>
+<li>19御后，可以选择上诸葛亮或关羽。</li>
+</ul>
+<h2 id="4-甘宁太史慈双输出"><a class="header" href="#4-甘宁太史慈双输出">4. 甘宁+太史慈（双输出）</a></h2>
+<ul>
+<li>20级前，甘宁：横扫千军，太史慈：折冲或兵无。</li>
+<li>20级后，甘宁：横扫（轻勇飞燕，万箭齐发）+避虚 太史慈：折冲+兵无（弯弓+手起刀落）太史慈记得要1速</li>
+<li>工具人带张宝（刮骨+无当）</li>
+<li>后期转型吴弓（上孙尚香，程普，都行）</li>
+</ul>
+<h2 id="5-袁绍朱儁7本上陈宫"><a class="header" href="#5-袁绍朱儁7本上陈宫">5. 袁绍+朱儁（7本上陈宫）</a></h2>
+<ul>
+<li>20级前，袁绍：杯蛇，朱儁：无当飞军</li>
+<li>20级后，袁绍：夺魄（勇者，避虚）+杯蛇，朱儁：无当+整装待发（坐守，御敌）</li>
+<li>工具人带张宝（盛气+八门）</li>
+<li>7本上陈宫就成型了，越早成型越早打高级地
+<ul>
+<li>袁绍：夺魄（勇者，避虚）+杯蛇，朱儁：无当+整装待发（坐守，御敌）</li>
+<li>陈宫：士别三日+八门（暂避）</li>
+</ul>
+</li>
+</ul>
+<h2 id="6-夏侯惇单刷"><a class="header" href="#6-夏侯惇单刷">6. 夏侯惇（单刷）</a></h2>
+<ul>
+<li>由于版本更新，现在武将死亡后指挥战法会失效，所以现在工具人不适合带指挥战法了，可以带兵种跟阵法。所以S2时候夏侯惇的工具人就是马腾（带1个兵）</li>
+<li>20级前带鲁莽（合军聚众，自愈），20级后带鲁莽+后发制人；马腾（带1个兵）带八门</li>
+<li>白板 5级开3级地，14级开4级地22级开5级地，34级10兵营开6级地（记得带工具人，16级后下工具人开4级地，多点经验,25级后下工具人开5级）。</li>
+<li>满红 5级开3级地，12级开4级地，20级开5级地，32级10兵营开6（15级下工具人开4，23级下工具人开5），夏侯惇加点推荐加统率。</li>
+<li>夏侯惇开荒的缺点是转型困难，优点是对战法跟战法点要求低，省资源，就算翻车了兵损失也不大。推荐打满5级地后再打5块6级地，过1W势力任务后再打满5级地。开始憋8本，升统御。期间可以用夏侯惇低损带二队扫荡5级地练级，二队也可以扔练兵场练级。这样是最快速成型队伍的方法。</li>
+</ul>
+<h2 id="7-赵云单刷"><a class="header" href="#7-赵云单刷">7. 赵云（单刷）</a></h2>
+<ul>
+<li>20级前带援救（等级高了带后发制人），20级后带援救+后发制人</li>
+<li>赵云开单刷方式可以参考夏侯惇，只是效率会比夏侯惇差些。</li>
+</ul>
+<h2 id="其他开荒队伍"><a class="header" href="#其他开荒队伍">其他开荒队伍</a></h2>
+<p>其他开荒队伍可以上一个辅助+输出（刘备+太史慈，刘备+乐进，刘备+马超。曹操+乐进，曹操+张飞或赵云，张飞+法正）
+或者双输出队伍（赵云+乐进，赵云+太史慈，孙坚+张飞，）
+不过要提醒大家无论你用什么阵容开荒，都要考虑到后期转型的问题，搭配的时候尽量选择一个后期转型的核心来进行搭配阵容。
+还有就是单刷开荒体系（夏侯惇，赵云），本人是不太推荐单刷，因为单刷对开局打架帮助不大，但是如果你没有其他更好的开荒选择，那单刷其实也是不错的选择，至少开荒进度不会落后太多。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="赛季3"><a class="header" href="#赛季3">赛季3</a></h1>
+<p>内容内容参考如下</p>
+<ul>
+<li><a href="https://forum.gamer.com.tw/C.php?bsn=36815&amp;snA=2799">【攻略】S3三勢陸開荒攻略</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="s3三势陆的四种开荒方案"><a class="header" href="#s3三势陆的四种开荒方案">S3三势陆的四种开荒方案</a></h1>
+<p>三势陆开荒的难点在于初始开荒队的选取以及如何转型。在开局前就要确定好开荒方案！</p>
+<p>这里提供了四种开荒方案供大家参考。</p>
+<h2 id="第一种方案打工流"><a class="header" href="#第一种方案打工流">第一种方案（打工流）</a></h2>
+<ul>
+<li>开局先用刘备张飞或赵云（13御）开荒，快速到7本，然后升练兵场，把陆逊+左慈+法正扔进去练兵，练到6次到20级就可以直接开6级地（陆逊带太平士别三日法正夺魄杯蛇蔡文姬三势阵白马）。期间升下3兵营。19御上诸葛亮。打工流的意思是前期先用其他好开荒的武将（刘备张飞）过度一下，让需要的阵容能快速成型。这是比较保险的方法，满红白板都可以用，操作简单易懂。</li>
+</ul>
+<h2 id="第二种方案火牛开荒团队推荐"><a class="header" href="#第二种方案火牛开荒团队推荐">第二种方案（火牛开荒团队推荐）</a></h2>
+<ul>
+<li>开局用陆逊+法正开荒，五本上蔡文姬成型（14御），陆逊带无当，法正带士别三日或盛气，蔡文姬带三势阵。10级开4级地，15级开5级地。20级后陆逊带太平风助法正夺魄杯蛇蔡文姬三势阵白马。然后打满5级地，24小时内升7本，建练兵场，练左慈到20级。就可以低损开6。然后19御上诸葛亮，成型队伍。第二种比第一种的优势是成型时间更早，等级更高，那样就能更早开高级地，劣势是前期过度比刘备张飞难，战损会更大点。战法能点满的情况下推荐用这方案。</li>
+</ul>
+<h2 id="第三种方案"><a class="header" href="#第三种方案">第三种方案</a></h2>
+<ul>
+<li>开局用陆逊+蔡文姬+李典（13御）开荒。带无当+士别三日+三势阵打4级地。然后7本后把蔡文姬和李典换成左慈和法正（左慈法正练兵到20级，如果法正是白板，李典满红，那李典可以不用换，只需把蔡文姬换成左慈，李典等19御换诸葛亮），就基本成型了。就可以开6级地，35级以后就可以开7级地了。19御上诸葛亮。陆逊带太平士别三日左慈带白马+三势法正（李典）带夺魄杯蛇（李典智力也还可以）。这种开局是3将，所以开三开4会更顺，开5战损会比第二种高些，如果法正是白板，蔡文姬3红以上李典满红，可以用这种开荒思路。</li>
+</ul>
+<h2 id="第四种方案不推荐"><a class="header" href="#第四种方案不推荐">第四种方案（不推荐）</a></h2>
+<ul>
+<li>就是直接用陆逊+左慈（12御）开荒，这种开荒适合满红，战法需要点满，不然前期打4级地战损大，还要对野怪难度有很大的了解，不然容易翻车，心态容易搞炸。这个方案风险大，普通玩家不好操作，所以不推荐，不过方案测试过确实可行，攻略也蛮写出来，供大家参考。（白板有刘备张飞的话，就老老实实用刘备张飞开荒吧）</li>
+</ul>
+<h1 id="四种开荒方案详细攻略"><a class="header" href="#四种开荒方案详细攻略">四种开荒方案详细攻略</a></h1>
+<h2 id="第一种方案开荒攻略刘备张飞开局"><a class="header" href="#第一种方案开荒攻略刘备张飞开局">第一种方案开荒攻略（刘备张飞开局）</a></h2>
+<ol>
+<li>开局跟着任务先做主线，升一级军舍用来铺路刘备张飞各单挑打2级升到7级单挑3级地，刘备带后发张飞带陷阵营或者后发，一直分开单刷3级地到10级（不冲榜觉得麻烦可以四本后直接合体低损开3级地）</li>
+<li>四级地：4本双10级后合体打4级地刘备（陷阵或盛气）+张飞（横扫）按刘备张飞野地难度表依照顺序开注意兵种克制，一直打四级地直到20级。（前面几块4级地可以用碰瓷队贾诩跟吕蒙先撞几百兵再上会更稳）</li>
+<li>五级地：20级把最好的装备给刘备张飞，刘备优先统率跟智力装备，张飞优先武力统率装备，20级刘备技能：盛气加陷阵营碰到克制兵种陷阵营换八门，20级张飞技能：瞋目横茅加横扫或者落凤加横扫千军，看刘备张飞五级地强弱表顺序打（白板队伍可以先上2御白卡工具人）</li>
+<li>六级地：7本后马上建一级演武场，把陆逊，左慈，法正扔进去练兵，练到6次到20级，练兵的同时，升3兵营，并屯8000左右兵，（陆逊带 太平 士别三日 法正 夺魄 杯蛇 左慈 三势阵 白马 或者 陆逊带 太平 无当 法正 夺魄 杯蛇 左慈 三势阵 士别三日）20级成型后推荐再继续打5级地，等到5兵营再开6级地（满红20级3兵营的时候可以直接开6，求稳就等5兵营），25级前避免去打盾兵。（诸葛亮记得扔练兵场练到30级）</li>
+<li>七级地：36级后可以开7级地，有兵书就更稳了。推荐在8本前开3块7级地（石头，木头，铁）屯田升8本19御后，上了诸葛亮再批量开7.（分城可以等19御后再建）</li>
+</ol>
+<h2 id="第二种方案开荒攻略陆逊法正蔡文姬开局"><a class="header" href="#第二种方案开荒攻略陆逊法正蔡文姬开局">第二种方案开荒攻略（陆逊法正蔡文姬开局）</a></h2>
+<ol>
+<li>开局先跟着主线任务走，上陆逊法正（开局统御不够需要五本上蔡文姬）陆逊带无当，法正带盛气，满红直接撞三级地，侦查四级地。为了节省兵力，可以先侦查几块三级地，找克制打下，升到7级再随便撞3级地。</li>
+<li>四级地：陆逊带无当，法正带士别三日或盛气，白板11级开4，满红10级开4级地（为了降低战损可以先上个2御白卡带八门）。先找曹洪枪打，有碰瓷队（贾诩+吕蒙）可以9级就开4级地。按照S3三势陆的野地难度表的顺序打地，5本后上蔡文姬（三势阵）。</li>
+<li>五级地：满红15级后就可以开5级地，（白板17级）先找曹洪枪，用碰瓷队先撞700兵以上再上，这个时候要有耐心，没撞700兵以上先别上，避免翻车。熬到20级就起飞。</li>
+<li>六级地：满红26级开6级地，满红可以在7本前打3块6级地（石头，木材，铁）屯田升7本3兵营（优先选6级石头打，如果6级地运气不好翻车一次就不建议再尝试，老老实实等7本3兵营后再开6）。白板就等3兵营后上左慈再开6级地。</li>
+<li>七级地：36级后再开7级地，推荐在8本前开3块7级地（石头，木头，铁）屯田升8本19御后，上了诸葛亮再批量开7.</li>
+</ol>
+<h2 id="第三种方案开荒攻略陆逊蔡文姬李典开局"><a class="header" href="#第三种方案开荒攻略陆逊蔡文姬李典开局">第三种方案开荒攻略（陆逊蔡文姬李典开局）</a></h2>
+<ol>
+<li>开局先跟着主线任务走，上陆逊蔡文姬或李典（蔡文姬和李典哪个红上哪个），陆逊带无当，另一个武将带盛气，为了节省兵力，可以先侦查几块三级地，找克制打下，升到7级再随便撞3级地，然后继续侦查4级地。</li>
+<li>四级地：4本后上第三个武将成型队伍（陆逊无当，蔡文姬盛气或士别三日，李典三势阵）然后陆逊蔡文姬（或李典）10级后就可以开4级地。先找曹洪枪打，有碰瓷队（贾诩+吕蒙）可以先撞掉几百兵再上，能有效降低战损。按照S3三势陆的野地难度表的顺序打地。</li>
+<li>五级地：满红15级后就可以开5级地，（白板17级）先找曹洪枪，用碰瓷队先撞700兵以上再上，这个时候要有耐心，没撞700兵以上先别上，避免翻车。熬到20级就起飞。</li>
+<li>六级地：满红27级开6级地，满红可以在7本前打3块6级地（石头，木材，铁）屯田升7本3兵营（优先选6级石头打，如果6级地运气不好翻车一次就不建议再尝试，老老实实等7本3兵营后再开6）。白板就等3兵營後上左慈跟法正再開6級地。</li>
+<li>七級地：36級後再開7級地，推薦在8本前開3塊7級地（石頭，木頭，鐵）屯田升8本19禦後，上了諸葛亮再批量開7.</li>
+<li>八級地：8級地壹騎絕塵沖榜任務，妳滿紅35級後就可以嘗試打，不過要找第壹隊是槍兵的八級地或者第壹隊是藤甲盾的8級銅（有翻車的風險喲）。完成任務後繼續開7級地，穩定開八級地的話等諸葛亮40級再批量開。進資源州後，差不多45級了就可以直接開9級地。後面就隨意玩了。</li>
+</ol>
+<h2 id="第四种方案开荒攻略陆逊左慈开局"><a class="header" href="#第四种方案开荒攻略陆逊左慈开局">第四种方案开荒攻略（陆逊左慈开局）</a></h2>
+<ol>
+<li>開局先跟著主線任務走，陸遜帶無當，左慈帶盛氣，直接撞三級地，偵查四級地。白板為了節省兵力，可以先偵查幾塊三級地，找克制打下，升到7級再隨便撞3級地。</li>
+<li>四級地：陸遜帶無當，左慈帶士別三日，白板12級開4，滿紅10級開4級地。按照野地難度表的順序打地。為了保險可以準備個碰瓷隊（賈詡+呂蒙）先碰掉幾百上千兵再上，就會很穩了。這陣容最難熬的階段就是4級地！也有幾率翻車！五本時候可以上個2禦白卡帶八門（帶1個兵）減少點戰損。等級高了（比如15級）就可以下了白卡，雙將開，經驗更多</li>
+<li>五級地：20級後陸遜帶太平 風助，左慈帶 無當 士別三日 。優先打曹洪槍兵，覺得戰損高可以帶個2禦白卡（八門）帶1個兵，六本後上李典 1個兵（三勢陣）就可以低損開五級地，這時候就熬過最難的階段了。把地全部換成5級地，然後升7本。
+7本上法正（可以先扔練兵場練兩次到20級）</li>
+<li>六級地：陸遜 30級 太平 +士別三日（風助火勢）
+左慈 30級 白馬+三勢陣
+法正 20級 奪魄+杯蛇（盛氣）
+就可以開6級地了。</li>
+<li>七級地：滿紅36級開7級地，白板37級開7級地比較穩。推薦在8本前開3塊7級地（石頭，木頭，鐵）屯田升8本19禦後，上了諸葛亮再批量開7.</li>
+<li>八級地：8級地壹騎絕塵沖榜任務，妳滿紅35級後就可以嘗試打，不過要找第壹隊是槍兵的八級地或者第壹隊是藤甲盾的8級銅（有翻車的風險喲）。完成任務後繼續開7級地，穩定開八級地的話等諸葛亮40級再批量開。進資源州後，差不多45級了就可以直接開9級地。後面就隨意玩了。</li>
+</ol>
+<h1 id="總結"><a class="header" href="#總結">總結</a></h1>
+<p>四種開荒方案，第一種最穩妥，前期的劉備張飛開荒大家都很熟悉，過度簡單，滿紅白板都適合。第二種方案適合半紅以上玩家玩，收益更高，在同水平的情況下第二天發育效率會比第一種的快，成型等級更高，就更早打高級地。第三種方案適合李典滿紅法正白板的情況下用，法正紅度高優先選第二種。第四種就是屬於風險大收益也大，雙將開前期如果運氣好，等級就能領先更多，不過4級地體驗真的不是很好哈，所以不推薦。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="战法系统"><a class="header" href="#战法系统">战法系统</a></h1>
+<p>战法是武将作战能力的核心，类似于武将的技能。在战斗中，武将会使用各种战法，产生不同的效果，如伤害、控制、恢复和增益等。不同战法的搭配可以产生完全不同的效果。</p>
+<h2 id="战法类型"><a class="header" href="#战法类型">战法类型</a></h2>
+<p>战法共有七种类型，其中只有<strong>内政战法</strong>不能在战斗中使用。其他六种战法按照在战斗中的发动顺序，分别为：</p>
+<p>战法|准备回合发动(被动战法→阵法战法→兵种战法→指挥战法)|作战回合发动(主动战法→突击战法)</p>
+<h2 id="如何获得战法"><a class="header" href="#如何获得战法">如何获得战法</a></h2>
+<p>每个武将都有其独特的自带战法，这些自带战法不可被遗忘或替换。通过<strong>传承</strong>和<strong>演练</strong>，可以获得其他武将的传承战法，这些战法可供所有武将学习。</p>
+<h3 id="1-传承战法"><a class="header" href="#1-传承战法">1. 传承战法</a></h3>
+<ul>
+<li><strong>获取方式</strong>：消耗一名武将即可获得其传承战法。</li>
+<li><strong>查看方式</strong>：点击武将立绘右下角的传承按钮，进入传承界面查看传承战法的出处及演练需求。</li>
+</ul>
+<h3 id="2-演练战法"><a class="header" href="#2-演练战法">2. 演练战法</a></h3>
+<ul>
+<li>初始传承战法的演练度为30%，需要消耗武将进行演练，提升演练度。演练度达到100%后，其他武将可以学习该战法。</li>
+</ul>
+<h2 id="如何学习战法"><a class="header" href="#如何学习战法">如何学习战法</a></h2>
+<p>除了自带战法外，武将还可以学习最多两个传承战法。学习这两个传承战法需要解锁第二和第三个战法槽。</p>
+<h3 id="1-第二战法槽"><a class="header" href="#1-第二战法槽">1. 第二战法槽</a></h3>
+<ul>
+<li><strong>解锁条件</strong>：武将达到5级时解锁第二个战法槽。</li>
+</ul>
+<h3 id="2-第三战法槽"><a class="header" href="#2-第三战法槽">2. 第三战法槽</a></h3>
+<ul>
+<li><strong>解锁条件</strong>：武将觉醒后解锁第三个战法槽。武将需要满足以下条件才能觉醒：
+<ul>
+<li>武将等级达到20级</li>
+<li>自带战法达到10级</li>
+<li>消耗2个同星武将进行觉醒</li>
+</ul>
+</li>
+</ul>
+<h2 id="如何强化战法"><a class="header" href="#如何强化战法">如何强化战法</a></h2>
+<p>武将战法的等级越高，对战力的提升越大。提升战法等级需要消耗<strong>战法点</strong>，战法点主要通过转化武将获得。武将可以通过招募或寻访获得。</p>
+<ul>
+<li>在战法转化界面，选择想要转化的武将后，点击<strong>铜币转化</strong>或<strong>金珠转化</strong>即可。使用金锥转化可以获得两倍的战法点。</li>
+<li>在招募界面下方有<strong>铜币转化低级武将</strong>的选项，可以通过设置，自动将招募到的武将转化为战法点。</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>

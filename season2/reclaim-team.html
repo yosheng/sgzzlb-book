@@ -1,0 +1,306 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>开荒组合搭配 - 三国志战略版</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././mdbook-admonish.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">三国志战略版</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/yosheng/sgzzlb-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/yosheng/sgzzlb-book/edit/master/src/season2/reclaim-team.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="开荒武将推荐"><a class="header" href="#开荒武将推荐">开荒武将推荐</a></h1>
+<h2 id="输出类"><a class="header" href="#输出类">输出类：</a></h2>
+<ul>
+<li>赵云，张飞，甘宁，太史慈，乐进，马超，夏侯渊，孙坚，夏侯惇</li>
+</ul>
+<h2 id="奶妈辅助类"><a class="header" href="#奶妈辅助类">奶妈辅助类：</a></h2>
+<ul>
+<li>刘备，曹操，华佗，法正，蔡文姬，祝融，左慈</li>
+</ul>
+<h2 id="低统御第三人工具人选择"><a class="header" href="#低统御第三人工具人选择">低统御第三人（工具人）选择：</a></h2>
+<ul>
+<li>2御白卡，李典，张宝，蔡文姬，左慈，华佗，郭淮，黄月英，法正
+（工具人的定义是只需要带一个兵，带上阵法或兵种技能，死了也没损失，只是会分摊些经验）
+（改版后武将死亡后，指挥战法会失效，不过阵法跟兵种的依然有效）</li>
+</ul>
+<h2 id="开荒前考虑"><a class="header" href="#开荒前考虑">开荒前考虑</a></h2>
+<p>开荒前请考虑好要转型的阵容，比如你一队要用桃园队，就直接刘备张飞开荒，打算玩奶枪（刘备赵云诸葛亮）就用刘备赵云开荒，千万别开到中途再转阵容，那样会非常伤，很拖节奏！</p>
+<h2 id="1-刘备张飞最稳的开荒队伍"><a class="header" href="#1-刘备张飞最稳的开荒队伍">1. 刘备+张飞（最稳的开荒队伍）</a></h2>
+<ul>
+<li>20级前，刘备：盛气或陷阵，张飞：横扫千军</li>
+<li>20级后，刘备：盛气+陷阵（杯蛇，八门） 张飞：卧薪（落凤，瞋目横矛）+横扫</li>
+<li>后面打六级地带3御武将蔡文姬＞李典＞张宝（蔡文姬跟李典哪个红度更高就上哪个）</li>
+<li>刘备：夺魄+杯蛇。张飞：卧薪（落凤，瞠目横矛）+横扫 蔡文姬：盛气+陷阵（想省战法点的话，刘备跟蔡文姬的技能可以调换一下，这样成型后，刘备的战法可以不用再调）</li>
+<li>后期可以考虑上赵云或者关羽，
+<ul>
+<li>19御可以直接上赵云，开荒稳定性比上关羽好。</li>
+<li>20御上关羽可以直接成型桃园队，不过开荒效率会比上赵云慢。（因为要憋20御大概会比赵云晚一天时间成型）</li>
+</ul>
+</li>
+<li>成型后，刘备：盛气+陷阵。张飞：落凤+横扫 赵云：破阵+卧薪（所向）上关羽就带白眉+所向</li>
+</ul>
+<h2 id="2-刘备赵云开荒效率仅次于刘备张飞后期20御直接上诸葛亮转型奶枪"><a class="header" href="#2-刘备赵云开荒效率仅次于刘备张飞后期20御直接上诸葛亮转型奶枪">2. 刘备+赵云（开荒效率仅次于刘备张飞，后期20御直接上诸葛亮，转型奶枪）</a></h2>
+<ul>
+<li>20级前，刘备：杯蛇或盛气 赵云：横扫千军</li>
+<li>20级后，刘备：杯蛇+盛气 赵云：卧薪尝胆（落凤）+横扫</li>
+<li>后面打六级地上3御武将蔡文姬＞李典＞张宝（看红度选择，满红李典跟白板蔡文姬就选李典）</li>
+<li>刘备：夺魄+杯蛇，赵云：卧薪尝胆（落凤）+横扫 蔡文姬：盛气+八门（骑兵）</li>
+<li>刘备：夺魄+杯蛇，赵云：卧薪尝胆（落凤）+横扫 李典：盛气+陷阵（盾兵）</li>
+<li>憋到20御直接上诸葛亮，组成奶枪，前期开荒跟打架都十分凶猛！
+<ul>
+<li>诸葛亮：夺魄+杯蛇，赵云：卧薪尝胆（落凤）+横扫，刘备：八门+白毦兵（枪兵）</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-赵云张飞双输出"><a class="header" href="#3-赵云张飞双输出">3. 赵云+张飞（双输出）</a></h2>
+<ul>
+<li>20级前，赵云：横扫千军，张飞：盛气</li>
+<li>20级后，赵云：卧薪（破阵）+杯蛇（赵云由于1技能智力加成很高，完全可以当个奶妈使用）</li>
+<li>张飞：盛气+横扫</li>
+<li>7本可以上法正，带陷阵营。组盾兵队，陷阵营这个技能很适合开荒。
+<ul>
+<li>赵云：卧薪（破阵）+杯蛇 张飞：落凤+横扫 法正：盛气+陷阵（盾兵）</li>
+</ul>
+</li>
+<li>19御后，可以选择上诸葛亮或关羽。</li>
+</ul>
+<h2 id="4-甘宁太史慈双输出"><a class="header" href="#4-甘宁太史慈双输出">4. 甘宁+太史慈（双输出）</a></h2>
+<ul>
+<li>20级前，甘宁：横扫千军，太史慈：折冲或兵无。</li>
+<li>20级后，甘宁：横扫（轻勇飞燕，万箭齐发）+避虚 太史慈：折冲+兵无（弯弓+手起刀落）太史慈记得要1速</li>
+<li>工具人带张宝（刮骨+无当）</li>
+<li>后期转型吴弓（上孙尚香，程普，都行）</li>
+</ul>
+<h2 id="5-袁绍朱儁7本上陈宫"><a class="header" href="#5-袁绍朱儁7本上陈宫">5. 袁绍+朱儁（7本上陈宫）</a></h2>
+<ul>
+<li>20级前，袁绍：杯蛇，朱儁：无当飞军</li>
+<li>20级后，袁绍：夺魄（勇者，避虚）+杯蛇，朱儁：无当+整装待发（坐守，御敌）</li>
+<li>工具人带张宝（盛气+八门）</li>
+<li>7本上陈宫就成型了，越早成型越早打高级地
+<ul>
+<li>袁绍：夺魄（勇者，避虚）+杯蛇，朱儁：无当+整装待发（坐守，御敌）</li>
+<li>陈宫：士别三日+八门（暂避）</li>
+</ul>
+</li>
+</ul>
+<h2 id="6-夏侯惇单刷"><a class="header" href="#6-夏侯惇单刷">6. 夏侯惇（单刷）</a></h2>
+<ul>
+<li>由于版本更新，现在武将死亡后指挥战法会失效，所以现在工具人不适合带指挥战法了，可以带兵种跟阵法。所以S2时候夏侯惇的工具人就是马腾（带1个兵）</li>
+<li>20级前带鲁莽（合军聚众，自愈），20级后带鲁莽+后发制人；马腾（带1个兵）带八门</li>
+<li>白板 5级开3级地，14级开4级地22级开5级地，34级10兵营开6级地（记得带工具人，16级后下工具人开4级地，多点经验,25级后下工具人开5级）。</li>
+<li>满红 5级开3级地，12级开4级地，20级开5级地，32级10兵营开6（15级下工具人开4，23级下工具人开5），夏侯惇加点推荐加统率。</li>
+<li>夏侯惇开荒的缺点是转型困难，优点是对战法跟战法点要求低，省资源，就算翻车了兵损失也不大。推荐打满5级地后再打5块6级地，过1W势力任务后再打满5级地。开始憋8本，升统御。期间可以用夏侯惇低损带二队扫荡5级地练级，二队也可以扔练兵场练级。这样是最快速成型队伍的方法。</li>
+</ul>
+<h2 id="7-赵云单刷"><a class="header" href="#7-赵云单刷">7. 赵云（单刷）</a></h2>
+<ul>
+<li>20级前带援救（等级高了带后发制人），20级后带援救+后发制人</li>
+<li>赵云开单刷方式可以参考夏侯惇，只是效率会比夏侯惇差些。</li>
+</ul>
+<h2 id="其他开荒队伍"><a class="header" href="#其他开荒队伍">其他开荒队伍</a></h2>
+<p>其他开荒队伍可以上一个辅助+输出（刘备+太史慈，刘备+乐进，刘备+马超。曹操+乐进，曹操+张飞或赵云，张飞+法正）
+或者双输出队伍（赵云+乐进，赵云+太史慈，孙坚+张飞，）
+不过要提醒大家无论你用什么阵容开荒，都要考虑到后期转型的问题，搭配的时候尽量选择一个后期转型的核心来进行搭配阵容。
+还有就是单刷开荒体系（夏侯惇，赵云），本人是不太推荐单刷，因为单刷对开局打架帮助不大，但是如果你没有其他更好的开荒选择，那单刷其实也是不错的选择，至少开荒进度不会落后太多。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../season2/prepare.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../season3/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../season2/prepare.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../season3/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
