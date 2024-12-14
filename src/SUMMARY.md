@@ -3,6 +3,7 @@
 [简介](./introduction.md)
 [赛季总览](./seasons.md)
 - [赛季1](./season1/README.md)
+    - [简介](./season1/introduction.md)
     - [新手教程](./season1/newbie.md)
     - [开荒](./season1/reclaim.md)
 - [赛季2](./season2/README.md)
