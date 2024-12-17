@@ -1,0 +1,368 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>蜀解析 - 三国志战略版</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././mdbook-admonish.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">三国志战略版</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/yosheng/sgzzlb-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/yosheng/sgzzlb-book/edit/master/src/season1/team-composition-shu.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="蜀"><a class="header" href="#蜀">蜀</a></h1>
+<h2 id="一天下枪奶枪"><a class="header" href="#一天下枪奶枪">一、天下枪（奶枪）</a></h2>
+<ul>
+<li><strong>武将:</strong> 诸葛亮 + 赵云 + 刘备 (或法正)</li>
+<li><strong>战法:</strong>
+<ul>
+<li>诸葛亮: 夺魂挟魄, 杯蛇鬼车</li>
+<li>赵云: 破阵摧坚, 卧薪尝胆 (或所向披靡)</li>
+<li>刘备 (或法正): 白毦兵, 八门金锁阵</li>
+</ul>
+</li>
+<li><strong>加点:</strong> 诸葛亮全智力，刘备全智力，赵云全武力 或 20速度+30武力</li>
+<li><strong>核心战法:</strong> 八门金锁阵 + 夺魂挟魄 + 破阵摧坚</li>
+<li><strong>特点:</strong> S1 赛季开荒和打架都非常强势的 T0 级别队伍。加点可根据个人喜好调整，但打架时增加速度总不会错。</li>
+</ul>
+<h2 id="二桃园盾"><a class="header" href="#二桃园盾">二、桃园盾</a></h2>
+<ul>
+<li><strong>武将:</strong> 刘备 + 关羽 + 张飞</li>
+<li><strong>战法:</strong>
+<ul>
+<li>刘备: 陷阵营, 暂避其锋</li>
+<li>关羽: 盛气凌敌, 纵兵劫掠 (或白眉)</li>
+<li>张飞: 破阵摧坚, 横扫千军</li>
+</ul>
+</li>
+<li><strong>加点:</strong> 刘备全智力，关羽全速度，张飞 20速度+30武力</li>
+<li><strong>核心战法:</strong> 盛气凌敌 + 横扫千军 + 暂避其锋 + 陷阵营</li>
+<li><strong>特点:</strong> 桃园盾可以克制 S1 赛季所有的弓兵阵容，如果环境合适，可以优先选择。</li>
+</ul>
+<h2 id="三三切桃园盾枪骑"><a class="header" href="#三三切桃园盾枪骑">三、三切桃园（盾/枪/骑）</a></h2>
+<ul>
+<li><strong>武将:</strong> 刘备 + 关羽 + 张飞</li>
+<li><strong>战法:</strong>
+<ul>
+<li>刘备: 盛气凌敌, 暂避其锋</li>
+<li>关羽: 横扫千军, 纵兵劫掠 (或白眉)</li>
+<li>张飞: 破阵摧坚, 洛凤</li>
+</ul>
+</li>
+<li><strong>加点:</strong> 刘备全智力，关羽全速度 或 20速度+30武力，张飞 35速度+15武力</li>
+<li><strong>核心战法:</strong> 盛气凌敌 + 横扫千军 + 暂避其锋</li>
+<li><strong>特点:</strong> S1 赛季骑兵可能不太适合，但一切都要看区服环境。不带特殊兵种的桃园最大特性是可以切换兵种打克制，战场随机应变更为灵活，整体战法衔接控制链 + 减防 + 队伍减伤及稳定回复。</li>
+</ul>
+<h2 id="四蜀盾"><a class="header" href="#四蜀盾">四、蜀盾</a></h2>
+<ul>
+<li><strong>武将:</strong> 刘备 + 张飞 + 黄忠</li>
+<li><strong>战法:</strong>
+<ul>
+<li>刘备: 陷阵营, 盛气凌敌</li>
+<li>张飞: 破阵摧坚, 横扫千军</li>
+<li>黄忠: 白眉 (或鲁莽), 纵兵劫掠 (或所向披靡)</li>
+</ul>
+</li>
+<li><strong>加点:</strong> 刘备全智力，张飞 20速度+30武力，黄忠全武力</li>
+<li><strong>核心战法:</strong> 盛气凌敌 + 横扫千军 + 陷阵营</li>
+<li><strong>特点:</strong> 这队如果想极致提升刘备的保护能力，可以考虑将盛气凌敌替换为暂避其锋，但要根据保护张飞还是黄忠来调整武力加点。黄忠发挥正常一切皆有可能。张飞加点速度确保先手破阵。</li>
+</ul>
+<h2 id="五五虎枪"><a class="header" href="#五五虎枪">五、五虎枪</a></h2>
+<ul>
+<li><strong>武将:</strong> 赵云 + 关羽 + 张飞</li>
+<li><strong>战法:</strong>
+<ul>
+<li>赵云: 破阵摧坚, 卧薪尝胆 (或纵兵劫掠)</li>
+<li>关羽: 横扫千军, 所向披靡 (或白眉)</li>
+<li>张飞: 盛气凌敌, 洛凤</li>
+</ul>
+</li>
+<li><strong>加点:</strong> 赵云全武力，关羽 20速度+30武力，张飞 35速度+15武力</li>
+<li><strong>核心战法:</strong> 卧薪尝胆 + 横扫千军 + 盛气凌敌</li>
+<li><strong>特点:</strong> 这里列举的是最强的五虎枪阵容。张飞加点速度确保先手破甲，关羽不怕发挥不稳定的可以带所向披靡追求极致输出，整体思路是控制 + 减防。</li>
+</ul>
+<h2 id="六大蜀枪"><a class="header" href="#六大蜀枪">六、大蜀枪</a></h2>
+<ul>
+<li><strong>武将:</strong> 诸葛亮 + 张飞 (或关羽) + 赵云</li>
+<li><strong>战法:</strong>
+<ul>
+<li>诸葛亮: 夺魂挟魄, 杯蛇鬼车 (或八门金锁阵)</li>
+<li>张飞 (或关羽): 盛气凌敌, 横扫千军</li>
+<li>赵云: 破阵摧坚, 卧薪尝胆 (或所向披靡)</li>
+</ul>
+</li>
+<li><strong>加点:</strong> 诸葛亮全智力，张飞 20速度+30武力，赵云 20速度+30武力</li>
+<li><strong>核心战法:</strong> 夺魂挟魄 + 卧薪尝胆 + 盛气凌敌 + 横扫千军</li>
+<li><strong>特点:</strong> 大蜀枪和五虎枪类似，都是打控制链。张飞稳定输出，破甲缴械。相比关羽，张飞发挥更稳定，有盛气凌敌对战吴弓也不落下风。</li>
+</ul>
+<h2 id="七诸葛枪"><a class="header" href="#七诸葛枪">七、诸葛枪</a></h2>
+<ul>
+<li><strong>武将:</strong> 诸葛亮 + 关羽 + 张飞</li>
+<li><strong>战法:</strong>
+<ul>
+<li>诸葛亮: 夺魂挟魄, 杯蛇鬼车</li>
+<li>关羽: 横扫千军, 白眉 (或所向披靡)</li>
+<li>张飞: 盛气凌敌, 破阵摧坚</li>
+</ul>
+</li>
+<li><strong>加点:</strong> 诸葛亮全智力，关羽 20速度+30武力，张飞 35速度+15武力</li>
+<li><strong>核心战法:</strong> 夺魂挟魄 + 横扫千军 + 盛气凌敌 + 破阵摧坚</li>
+<li><strong>特点:</strong> 这队变种较多，在没有赵云的情况下，诸葛亮带两个五虎或刘备类的辅助都能称得上诸葛枪。诸葛亮 + 关羽 + 张飞是最强的诸葛枪组合，其他变种可在缺少武将时选择。</li>
+</ul>
+<h2 id="八蜀弓"><a class="header" href="#八蜀弓">八、蜀弓</a></h2>
+<ul>
+<li><strong>武将:</strong> 诸葛亮 + 黄忠 + 刘备 (或法正)</li>
+<li><strong>战法:</strong>
+<ul>
+<li>诸葛亮: 夺魂挟魄, 杯蛇鬼车</li>
+<li>黄忠: 白眉, 万箭齐发</li>
+<li>刘备 (或法正): 无当飞军, 八门金锁阵</li>
+</ul>
+</li>
+<li><strong>加点:</strong> 诸葛亮全智力，黄忠全武力，刘备全智力</li>
+<li><strong>核心战法:</strong> 八门金锁阵 + 万箭齐发 + 夺魂挟魄</li>
+<li><strong>特点:</strong> 黄忠爆发起来伤害可观。这队弓兵在 S1 赛季躲开桃园盾和魏盾后比较吃香。</li>
+</ul>
+<h2 id="九蜀智"><a class="header" href="#九蜀智">九、蜀智</a></h2>
+<ul>
+<li><strong>武将:</strong> 诸葛亮 + 法正 + 徐庶</li>
+<li><strong>战法:</strong>
+<ul>
+<li>诸葛亮: 夺魂挟魄, 杯蛇鬼车</li>
+<li>法正: 八门金锁阵, 无当飞军</li>
+<li>徐庶: 四面楚歌, 克敌制胜</li>
+</ul>
+</li>
+<li><strong>加点:</strong> 诸葛亮、法正、徐庶全智力</li>
+<li><strong>核心战法:</strong> 八门金锁阵 + 无当飞军 + 夺魂挟魄</li>
+<li><strong>特点:</strong> 如果有更好的选择，诸葛亮还是优先去组其他蜀国队伍。S1 的蜀智经常打平，但大多数情况不会吃亏。</li>
+</ul>
+<h2 id="十蜀枪变种"><a class="header" href="#十蜀枪变种">十、蜀枪变种</a></h2>
+<ul>
+<li><strong>武将:</strong> 赵云 + 刘备 + 张飞</li>
+<li><strong>战法:</strong>
+<ul>
+<li>赵云: 破阵摧坚, 卧薪尝胆 (或所向披靡)</li>
+<li>刘备: 盛气凌敌, 八门金锁阵</li>
+<li>张飞: 洛凤, 横扫千军</li>
+</ul>
+</li>
+<li><strong>加点:</strong> 赵云 10速度+40武力，刘备全智力，张飞 20速度+30武力</li>
+<li><strong>核心战法:</strong> 盛气凌敌 + 横扫千军 + 八门金锁阵 + 卧薪尝胆</li>
+<li><strong>特点:</strong> 这队特别提一下，S1-S2 开局刘张或刘赵开荒都是很好的选择，有刘备张飞就优先刘张开。整体思路是张飞先手破阵破甲，赵云补伤害 + 控制。这队生存能力强，且可以盾枪双切。张飞的另一种带法是 文武双全 + 绝地反击；赵云 破阵 + 横扫。</li>
+</ul>
+<h2 id="十一蜀法枪"><a class="header" href="#十一蜀法枪">十一、蜀法枪</a></h2>
+<ul>
+<li><strong>武将:</strong> 诸葛亮 + 赵云 + 陈到 (或法正)</li>
+<li><strong>战法:</strong>
+<ul>
+<li>诸葛亮: 夺魂挟魄, 杯蛇鬼车</li>
+<li>赵云: 破阵摧坚, 横扫千军</li>
+<li>陈到: 盛气凌敌, 八门金锁阵</li>
+</ul>
+</li>
+<li><strong>加点:</strong> 诸葛亮全智力，赵云 20速度+30武力，陈到全智力</li>
+<li><strong>核心战法:</strong> 盛气凌敌 + 横扫千军 + 八门金锁阵</li>
+<li><strong>特点:</strong>  这队与奶枪有些类似，是缺少刘备或者刘备去组桃园时的变种阵容。战法可以根据自身调整，强度接近 T1 级别。</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../season1/team-composition.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../season1/team-composition-wei.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../season1/team-composition.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../season1/team-composition-wei.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
