@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>战法 - 三国志战略版</title>
+        <title>攻防城池解析 - 三国志战略版</title>
 
 
         <!-- Custom HTML head -->
@@ -130,7 +130,7 @@
                         <a href="https://github.com/yosheng/sgzzlb-book" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        <a href="https://github.com/yosheng/sgzzlb-book/edit/master/src/tactics.md" title="Suggest an edit" aria-label="Suggest an edit">
+                        <a href="https://github.com/yosheng/sgzzlb-book/edit/master/src/attack-city.md" title="Suggest an edit" aria-label="Suggest an edit">
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
 
@@ -159,56 +159,107 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="战法系统"><a class="header" href="#战法系统">战法系统</a></h1>
-<p>战法是武将作战能力的核心，类似于武将的技能。在战斗中，武将会使用各种战法，产生不同的效果，如伤害、控制、恢复和增益等。不同战法的搭配可以产生完全不同的效果。</p>
-<h2 id="战法类型"><a class="header" href="#战法类型">战法类型</a></h2>
-<p>战法共有七种类型，其中只有<strong>内政战法</strong>不能在战斗中使用。其他六种战法按照在战斗中的发动顺序，分别为：</p>
-<p>战法|准备回合发动(被动战法→阵法战法→兵种战法→指挥战法)|作战回合发动(主动战法→突击战法)</p>
-<h2 id="如何获得战法"><a class="header" href="#如何获得战法">如何获得战法</a></h2>
-<p>每个武将都有其独特的自带战法，这些自带战法不可被遗忘或替换。通过<strong>传承</strong>和<strong>演练</strong>，可以获得其他武将的传承战法，这些战法可供所有武将学习。</p>
-<h3 id="1-传承战法"><a class="header" href="#1-传承战法">1. 传承战法</a></h3>
+                        <h1 id="攻城攻略整理"><a class="header" href="#攻城攻略整理">攻城攻略整理</a></h1>
+<h2 id="1-对方藏兵反击"><a class="header" href="#1-对方藏兵反击">1. 对方藏兵反击</a></h2>
+<p>如果只是单纯自保藏兵，其实无关紧要，反正最终会被俘虏。但需要特别注意的是，藏兵反击清车的情况，这种方式旨在通过清理攻城器械来延长攻陷时间。特别是在中、后期，通过提高城防并配合精准的闭城操作，会给我方进攻造成困扰。以下是藏兵反击的常见形式：</p>
 <ul>
-<li><strong>获取方式</strong>：消耗一名武将即可获得其传承战法。</li>
-<li><strong>查看方式</strong>：点击武将立绘右下角的传承按钮，进入传承界面查看传承战法的出处及演练需求。</li>
-</ul>
-<h3 id="2-演练战法"><a class="header" href="#2-演练战法">2. 演练战法</a></h3>
-<ul>
-<li>初始传承战法的演练度为30%，需要消耗武将进行演练，提升演练度。演练度达到100%后，其他武将可以学习该战法。</li>
-</ul>
-<h2 id="如何学习战法"><a class="header" href="#如何学习战法">如何学习战法</a></h2>
-<p>除了自带战法外，武将还可以学习最多两个传承战法。学习这两个传承战法需要解锁第二和第三个战法槽。</p>
-<h3 id="1-第二战法槽"><a class="header" href="#1-第二战法槽">1. 第二战法槽</a></h3>
-<ul>
-<li><strong>解锁条件</strong>：武将达到5级时解锁第二个战法槽。</li>
-</ul>
-<h3 id="2-第三战法槽"><a class="header" href="#2-第三战法槽">2. 第三战法槽</a></h3>
-<ul>
-<li><strong>解锁条件</strong>：武将觉醒后解锁第三个战法槽。武将需要满足以下条件才能觉醒：
-<ul>
-<li>武将等级达到20级</li>
-<li>自带战法达到10级</li>
-<li>消耗2个同星武将进行觉醒</li>
-</ul>
+<li>
+<p><strong>主将位置空出</strong>：<br />
+对方通过拖曳主将离开，城内部队将不应战，只有在主将回到原位时才会作战。</p>
+</li>
+<li>
+<p><strong>驻守后中止</strong>：<br />
+部队停留在玩家主城中心，无法攻击，且不应战，只有在对方重新驻守后才会作战。</p>
 </li>
 </ul>
-<h2 id="如何强化战法"><a class="header" href="#如何强化战法">如何强化战法</a></h2>
-<p>武将战法的等级越高，对战力的提升越大。提升战法等级需要消耗<strong>战法点</strong>，战法点主要通过转化武将获得。武将可以通过招募或寻访获得。</p>
+<hr />
+<h2 id="2-反击原理"><a class="header" href="#2-反击原理">2. 反击原理</a></h2>
+<h3 id="举例1对方有帮手驻军且无藏兵"><a class="header" href="#举例1对方有帮手驻军且无藏兵">举例1：对方有帮手驻军且无藏兵</a></h3>
+<p>部队顺序：<br />
+驻军先 → 驻军后 → 敌部队1 → 敌部队2 → 敌部队3 → 敌部队4 → 敌部队5</p>
 <ul>
-<li>在战法转化界面，选择想要转化的武将后，点击<strong>铜币转化</strong>或<strong>金珠转化</strong>即可。使用金锥转化可以获得两倍的战法点。</li>
-<li>在招募界面下方有<strong>铜币转化低级武将</strong>的选项，可以通过设置，自动将招募到的武将转化为战法点。</li>
+<li>我方进攻时，需先清空驻军，从后（晚到）清到前（早到）。</li>
+<li>驱逐完驻军后，再依序清理敌部队（编号1至5）。</li>
+<li>清空敌部队后，才能进入削减城防阶段。</li>
 </ul>
+<hr />
+<h3 id="举例2对方无帮手藏兵清我军器械"><a class="header" href="#举例2对方无帮手藏兵清我军器械">举例2：对方无帮手，藏兵清我军器械</a></h3>
+<p>部队顺序：<br />
+我器械1 → 我器械2 → 我器械3 → 我器械4</p>
+<ul>
+<li>我方主力攻城撤退后，敌方藏兵现身，依序从我器械4清到1。</li>
+</ul>
+<hr />
+<h3 id="举例3针对藏兵的应对策略"><a class="header" href="#举例3针对藏兵的应对策略">举例3：针对藏兵的应对策略</a></h3>
+<ul>
+<li>确保每波器械都有主力队伍保护。</li>
+<li>若主力断后被击溃，藏兵仍可能对器械造成伤害。</li>
+</ul>
+<p>示例配置：<br />
+我器械1 → 我器械2 → 我器械3 → 我器械4 → 我部队A → 我部队B → 我部队C</p>
+<ul>
+<li>敌方藏兵现身后，需先面对我部队C，依序B、A，清理完部队后才会攻击器械。</li>
+<li>只要部队A、B、C能守住，敌方主力逐一溃败重伤，我方可确保10分钟的安全期。</li>
+</ul>
+<hr />
+<h2 id="3-实战方针"><a class="header" href="#3-实战方针">3. 实战方针</a></h2>
+<p>由于游戏内缺乏语音沟通，建议个人配合友方车队秒数进行押车。若需计划性攻城，可通过时间点安排确保进攻车队的数量。</p>
+<h3 id="举例时间点确认"><a class="header" href="#举例时间点确认">举例：时间点确认</a></h3>
+<ul>
+<li><strong>12:00:00</strong> 第一波主力触城：确保器械触城无阻，只攻击一次（避免自动回城）。</li>
+<li><strong>12:01:00</strong> 器械触城开攻：注意对方可能在等待此波，器械足够时可分组。</li>
+<li><strong>12:01:00.1~5秒</strong> 押车主力触城：慢0.1~0.5秒，以保护车辆。</li>
+<li><strong>12:05:00</strong> 第一波主力停止退回（若未选只攻击一次需手动中止）。</li>
+<li><strong>12:05:35</strong> 第一波主力再次触城压后：避免任何突发状况。</li>
+</ul>
+<h3 id="触城统一压秒"><a class="header" href="#触城统一压秒">触城统一压秒</a></h3>
+<ul>
+<li>车车停靠点无需一定在城边。通过车速（一格30秒）与部队速（一格15秒）合理安排停车与部队停靠点，即便单人控制4个单位（2台车+2主力），也能轻松应对。</li>
+<li>请确保 <strong>“自己的车自己保护”</strong> 的基本原则。</li>
+</ul>
+<hr />
+<h2 id="4-机不可失"><a class="header" href="#4-机不可失">4. 机不可失</a></h2>
+<p>实战中存在许多有利机会，可利用上述调度方式优化进攻：</p>
+<ul>
+<li>
+<p><strong>主力部队重伤</strong>：<br />
+对方主力重伤无法上场，此时有10分钟安全期，适合调动主力殿后与上车。</p>
+</li>
+<li>
+<p><strong>对方调动在外</strong>：<br />
+城内无重兵时，可迅速上车并调动主力殿后。</p>
+</li>
+<li>
+<p><strong>其他情况</strong>：<br />
+实战灵活应变，视战局而定。</p>
+</li>
+</ul>
+<hr />
+<h2 id="5-攻城池运用"><a class="header" href="#5-攻城池运用">5. 攻城池运用</a></h2>
+<p>大型城池的攻防类似，只是参与人数从2~4人扩大至20~40人。</p>
+<ul>
+<li>驱逐驻军与NPC驻军后，器械开攻时，需确保主力部队殿后。</li>
+<li>防止敌方从城内调度转驻守或从城外派兵袭击。</li>
+</ul>
+<hr />
+<h2 id="6-太守车队"><a class="header" href="#6-太守车队">6. 太守车队</a></h2>
+<p>S1赛季末曾测试太守功能，结果显示：</p>
+<ul>
+<li>太守可编辑调动的部队，每次可使用5个单位。</li>
+<li>单位编号为1~5，受攻击顺序为 <strong>5→4→3→2→1</strong>。</li>
+<li>太守车队可在一定程度上自保三至四辆器械。</li>
+</ul>
+<pre><code class="language-admonish info title=&quot;出处&quot;">[ 三國志戰略版｜PvP玩家主城攻防需知](https://home.gamer.com.tw/artwork.php?sn=5134380)
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="seasons-general.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="tactics.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="attack-city.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -216,13 +267,10 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="seasons-general.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="tactics.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="attack-city.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
             </nav>
 
         </div>
