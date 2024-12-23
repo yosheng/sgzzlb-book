@@ -22,3 +22,4 @@
 - [赛季武将盘点](./seasons-general.md)
 - [战法](./tactics.md)
 - [攻防城池解析](./attack-city.md)
+- [新手操作知识点](./newbie-operation.md)
