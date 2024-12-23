@@ -7,6 +7,7 @@
         - [新手教程](./season1/newbie.md)
         - [新手开荒](./season1/newbie-reclaim.md)
         - [开荒组合搭配](./season1/reclaim-team.md)
+        - [武将解析](./season1/general.md)
         - [阵容搭配](./season1/team-composition.md)
             - [蜀解析](./season1/team-composition-shu.md) 
             - [魏解析](./season1/team-composition-wei.md) 
