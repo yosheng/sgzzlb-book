@@ -19,4 +19,5 @@
         - [开荒组合搭配](./season2/reclaim-team.md)
     - [赛季3](./season3/README.md)
         - [开荒组合搭配](./season3/reclaim-team.md)
+- [赛季武将盘点](./seasons-general.md)
 - [战法](./tactics.md)
