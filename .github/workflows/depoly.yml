@@ -15,12 +15,24 @@ jobs:
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Setup mdBook
-        uses: peaceiris/actions-mdbook@v1
+      - uses: actions/checkout@v4
+      - uses: jontze/action-mdbook@v3
         with:
-          mdbook-version: 'latest'
+          token: ${{secrets.GITHUB_TOKEN}}
+          # Optional Plugins have to be enabled with a version
+          mdbook-version: "~0.3.0" # Use a semver compatible string
+          use-linkcheck: true
+          linkcheck-version: "~0.7.0"
+          use-mermaid: true
+          mermaid-version: "~0.8.0"
+          use-toc: true
+          toc-version: "~0.7.0"
+          use-opengh: true
+          opengh-version: "~2.0.0"
+          use-admonish: true
+          admonish-version: "~1.8.0"
+          use-katex: true
+          katex-version: "~0.2.17"
 
       - name: Build book
         run: |
