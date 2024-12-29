@@ -27,3 +27,4 @@
     - [土地法](./rule/land.md)
     - [攻守城池](./rule/siege.md)
     - [教程法令](./rule/tutorial.md)
+    - [匪徒应对](./rule/gangster.md)
