@@ -17,6 +17,7 @@
         - [简介](./season2/introduction.md)
         - [开荒前准备](./season2/prepare.md)
         - [开荒组合搭配](./season2/reclaim-team.md)
+        - [阵容搭配](./season2/team-composition.md)
     - [赛季3](./season3/README.md)
         - [开荒组合搭配](./season3/reclaim-team.md)
 - [赛季武将盘点](./seasons-general.md)
