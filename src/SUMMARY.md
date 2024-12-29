@@ -25,3 +25,5 @@
 - [新手操作知识点](./newbie-operation.md)
 - [法令汇整](./rule/README.md)
     - [土地法](./rule/land.md)
+    - [攻守城池](./rule/siege.md)
+    - [教程法令](./rule/tutorial.md)
