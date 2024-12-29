@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>法令汇整 - 三国志战略版</title>
+        <title>战报解析 - 三国志战略版</title>
 
 
         <!-- Custom HTML head -->
@@ -12,33 +12,33 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="../favicon.svg">
-        <link rel="shortcut icon" href="../favicon.png">
-        <link rel="stylesheet" href="../css/variables.css">
-        <link rel="stylesheet" href="../css/general.css">
-        <link rel="stylesheet" href="../css/chrome.css">
-        <link rel="stylesheet" href="../css/print.css" media="print">
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="../fonts/fonts.css">
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="../highlight.css">
-        <link rel="stylesheet" href="../tomorrow-night.css">
-        <link rel="stylesheet" href="../ayu-highlight.css">
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href=".././mdbook-admonish.css">
+        <link rel="stylesheet" href="./mdbook-admonish.css">
 
 
         <!-- Provide site root to javascript -->
         <script>
-            var path_to_root = "../";
+            var path_to_root = "";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc.js"></script>
+        <script src="toc.js"></script>
     </head>
     <body>
     <div id="body-container">
@@ -90,7 +90,7 @@
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
-                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
             </noscript>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -124,13 +124,13 @@
                     <h1 class="menu-title">三国志战略版</h1>
 
                     <div class="right-buttons">
-                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
                         <a href="https://github.com/yosheng/sgzzlb-book" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        <a href="https://github.com/yosheng/sgzzlb-book/edit/master/src/rule/README.md" title="Suggest an edit" aria-label="Suggest an edit">
+                        <a href="https://github.com/yosheng/sgzzlb-book/edit/master/src/fight-report.md" title="Suggest an edit" aria-label="Suggest an edit">
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
 
@@ -159,40 +159,74 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="法令汇整"><a class="header" href="#法令汇整">法令汇整</a></h1>
-<p>S1 同盟职位分配如下</p>
-<p><img src="images/image-20241229100756292.png" alt="image-20241229100756292" /></p>
-<p>法令：只有同盟的盟主、副盟主、指挥官可以编辑法令，最多可以同时发布10个法令</p>
-<div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
+                        <h1 id="战报解析"><a class="header" href="#战报解析">战报解析</a></h1>
+<p>武将属性的因素：</p>
+<ol>
+<li>
+<p>武将面板属性：1级属性、每级成长属性、属性加点</p>
+</li>
+<li>
+<p>装备属性：所有装备属性加成，包括武器、防具、坐骑、宝物</p>
+</li>
+<li>
+<p>兵种适性：武将资料面板中骑兵S、盾兵A...，兵种适性S属性<em>120%，A</em>100%，B<em>85%，C</em>70%</p>
+</li>
+<li>
+<p>仙人战法：武将资料面板中左下方仙人标签，目前具备仙人战法只有3位——左慈、于吉、华佗，仙人战法属性+30%</p>
+</li>
+<li>
+<p>军事建筑：兵战-武/谋/防/速，升满级全队全属性+20点</p>
+</li>
+<li>
+<p>军事建筑：协力-魏/蜀/吴/群，升满级全队全属性+10%</p>
+</li>
+<li>
+<p>军事建筑：弓兵营全队全属性+10点，骑兵营全队首回合速度+20</p>
+</li>
+<li>
+<p>各种缘分效果：例如五虎上将全队武力、统率+10点，西蜀之智智力+14点等等</p>
+</li>
+<li>
+<p>各种加属性战法：例如长者之风满级全队武力、智力加28点等等</p>
+</li>
+</ol>
+<p>这九项属性加成决定了武将在战斗中最终的属性计算结果，那他们计算的先后顺序是怎样的？实测之后结论如下：</p>
+<p>Step1：计算武将基础属性=武将面板属性（包括1级属性、成长属性、属性加点）+装备属性，例：我的50级关羽，加点武力37、速度13，0进阶，加上装备，基础武力266.28</p>
+<p>Step2：计算兵种适性、仙人属性=武将基础属性*（兵种适性属性百分比+仙人属性百分比），例：还是那个关羽，枪兵<em>120%，无仙人加成，武力266.28</em>120%=319.54</p>
+<p>Step3：计算军事建筑 协力-魏/蜀/吴/群国家加成=兵种适性、仙人属性*（1+国家加成），例：还是我的五虎枪关羽，武力319.54*110%=351.49</p>
+<p>Step4：把剩下的所有加的属性全都累加上去，兵营，兵战+20武力，五虎+10武力，最终武力351.49+20+10=381.49</p>
+<p><img src="images/20757fet.jpg" alt="img" /></p>
+<p>所以最终的属性计算公式=武将基础属性（包括1级属性、成长属性、属性加点、装备属性）<em>（兵种适性属性百分比120%/100%/85%/70%+仙人属性百分比30%）</em>（1+协力国家加成10%）+兵战20点+弓兵营10点+缘分属性+战法属性。</p>
+<p>经过很多队伍的测试，可以保证公式是没问题的，大家可以自己测试，方法很简单队伍里随便一个人学个长者之风，准备回合括号里的就可以看到最终属性。</p>
+<p>下面针对属性公式给大家一些小提示：</p>
+<p>1.基础属性，也就是咱们可以在自己队伍里看到的面板属性，是效果最强的。基础属性在战斗中是做乘法运算，最高加成可以达到132%（S兵种适性120%*国家加成110%=132%）,而战法和缘分的属性加成效果更多是做加法运算，属性加成效果只有100%。</p>
+<p>2.那么仙人的30%呢？大家可以看看那三位神仙的兵种适性，于吉是唯一兵种适性有一个B的，C兵种适性70%+仙人30%=100%（和A兵种适性一样），B兵种适性85%+仙人30%=115%（弱于S兵种适性），再看看三位仙人的面板属性，真的是身板很弱。</p>
+<p><img src="images/20759bzy.jpg" alt="img" /></p>
+<p><img src="images/20760ylm.jpg" alt="img" /></p>
+<p><img src="images/20758qmp.jpg" alt="img" /></p>
+<p>战报解析：左慈基础属性武力16.27*（弓兵兵种适性属性百分比70%+仙人属性百分比30%）*（1+协力国家加成0%）+兵战-武20点+弓兵营10点+缘分属性0+战法属性长者之风武力14=60.27。</p>
+<p>3.国家队S兵种适性属性加成最高132%，国家队A兵种适性110%，混编队S兵种适性120%，只看单一武将来说，S兵种适性属性强于国家队A兵种适性，但是国家队是全体武将加10%属性，大家可以斟酌选择。</p>
+<div id="admonition-出处" class="admonition admonish-note" role="note" aria-labelledby="admonition-出处-title">
 <div class="admonition-title">
-<div id="admonition-note-title">
-<p>Note</p>
+<div id="admonition-出处-title">
+<p>出处</p>
 </div>
-<a class="admonition-anchor-link" href="#admonition-note"></a>
+<a class="admonition-anchor-link" href="#admonition-出处"></a>
 </div>
 <div>
-<p>另外在同盟当中也还可以通过发同盟邮件联系和告知同盟成员，同样同盟邮件也是有限制的。</p>
+<p><a href="https://sgz.ejoy.com/jinjie/detail-5268.html">【战斗机制】武将属性计算公式详解</a></p>
 </div>
 </div>
-<p>同盟邮件：同盟的盟主、副盟主、指挥官、外交官和官员可以发送全盟邮件</p>
-<p>分组邮件：只有分组的管理者可以发送当前分组成员可见的分组信件，其他分组的成员是无法看到的，同样盟主也是无法看到分组当中的邮件，这个也是分组当中的一个重要功能!</p>
-<p>信件内容颜色标注</p>
-<ul>
-<li>蓝：@文本@</li>
-<li>绿：$文本$</li>
-<li>红：&amp;文本&amp;</li>
-<li>黄：#文本#</li>
-</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../fight-report.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="newbie-operation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../rule/land.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="rule/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -202,11 +236,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../fight-report.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="newbie-operation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../rule/land.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="rule/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -221,13 +255,13 @@
         </script>
 
 
-        <script src="../elasticlunr.min.js"></script>
-        <script src="../mark.min.js"></script>
-        <script src="../searcher.js"></script>
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
 
-        <script src="../clipboard.min.js"></script>
-        <script src="../highlight.js"></script>
-        <script src="../book.js"></script>
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
 
