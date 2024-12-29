@@ -26,6 +26,7 @@
 - [战法](./tactics.md)
 - [攻防城池解析](./attack-city.md)
 - [新手操作知识点](./newbie-operation.md)
+- [战报解析](./fight-report.md)
 - [法令汇整](./rule/README.md)
     - [土地法](./rule/land.md)
     - [攻守城池](./rule/siege.md)
