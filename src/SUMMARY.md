@@ -27,6 +27,7 @@
 - [PK赛季武将组合](./pk-team-composition.md)
 - [战法](./tactics.md)
 - [战法总览](./tactics-collection.md)
+- [兵书总览](./military-strategy.md)
 - [攻防城池解析](./attack-city.md)
 - [新手操作知识点](./newbie-operation.md)
 - [战报解析](./fight-report.md)
