@@ -1,0 +1,396 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>兵书总览 - 三国志战略版</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/pagetoc.css">
+        <link rel="stylesheet" href="./mdbook-admonish.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">三国志战略版</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/yosheng/sgzzlb-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/yosheng/sgzzlb-book/edit/master/src/military-strategy.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <div class="content-wrap">
+                            <h1 id="兵书基本知识"><a class="header" href="#兵书基本知识">兵书基本知识</a></h1>
+<ol>
+<li>一个人只能携带同一个种类的兵书，选择了<strong>作战就只能带作战类的兵书</strong>，<strong>不可以</strong>奇正鬼谋厉军</li>
+<li>S2每个武将只能携带1个4字兵书和1个2字兵书，S3五星武将可以选择1个4字兵书和2个2字兵书，4星武将没变，<strong>不可</strong>奇正一鼓，诱敌援其等</li>
+<li>每个武将有的兵书都不会一样，例如<strong>曹操没有诱敌</strong>，<strong>吕布没有奇正</strong></li>
+</ol>
+<h1 id="一作战"><a class="header" href="#一作战">一：作战</a></h1>
+<h2 id="奇正相生"><a class="header" href="#奇正相生">奇正相生</a></h2>
+<p>每回合有15%(受智力属性加成)的机率获得<u>连击</u>状态
+适合武将：法刀体系的法师，例如陆逊，贾诩</p>
+<h2 id="胜而益强"><a class="header" href="#胜而益强">胜而益强</a></h2>
+<p>使自身在成功发动普通攻击后，有40%机率恢复一定兵力 (治疗率65%)
+适合武将：携带战法有连击的武将，例如太史慈，香香</p>
+<h2 id="不勇则死"><a class="header" href="#不勇则死">不勇则死</a></h2>
+<p>战斗第5回合开始，每回合有40%进入连击，<strong>禁疗</strong>状态
+适合武将：在现版本暂时不推荐使用此兵书</p>
+<h2 id="一鼓作气"><a class="header" href="#一鼓作气">一鼓作气</a></h2>
+<p>增加突击战法18%的伤害，随后每次发动突击战法该战法效果降低1/3
+*没有伤害的突击战法也会消耗1/3此兵书的效果，例如弯弓和折冲
+适合武将：携带突击战法的武将，例如吕布，张辽</p>
+<h2 id="蛮勇非勇"><a class="header" href="#蛮勇非勇">蛮勇非勇</a></h2>
+<p>提高自身智力属性，其值等于自身武力属性的16%
+适合武将：需要携带谋略伤害战法而且武力值高的武将(弱智不适合)，例如太史慈，姜维</p>
+<h2 id="武略"><a class="header" href="#武略">武略</a></h2>
+<p>提高8%普通攻击伤害
+适合武将：普通攻击较多且稳定的武将，例如太史慈</p>
+<h2 id="胜战"><a class="header" href="#胜战">胜战</a></h2>
+<p>战斗第2回合，自身获得65%破阵状态 (造成伤害时无视目标的统帅和智力)
+适合武将：在前几回合高输出的武将，例如吕布，张飞</p>
+<h2 id="执锐"><a class="header" href="#执锐">执锐</a></h2>
+<p>使自身造成的兵刃伤害和谋略伤害提高3%
+适合武将：基本上适合所有选择作战兵书的武将，例如吕布，姜维</p>
+<h2 id="藏刀"><a class="header" href="#藏刀">藏刀</a></h2>
+<p>自身<strong>突击战法伤害下降5%</strong>，突击战法发动率增加3%
+适合武将：携带辅助类突击战法的武将，不过太史慈和夏侯渊都没有这个兵书@@</p>
+<h2 id="分险"><a class="header" href="#分险">分险</a></h2>
+<p>成功发动突击战法后，使自身受到的兵刃伤害和谋略伤害降低6%，持续1回合
+*不可叠加
+适合武将：适合携带高发动几率突击战法和普攻较多的武将，例如太史慈，夏侯渊</p>
+<h2 id="文韬"><a class="header" href="#文韬">文韬</a></h2>
+<p>使自身造成的谋略伤害提高2.8% (受智力属性影响)
+适合武将：携带了奇正相生的法刀武将，例如陆逊，以及携带了蛮勇非勇的武将，例如姜维</p>
+<h1 id="二虚实"><a class="header" href="#二虚实">二：虚实</a></h1>
+<h2 id="后发先至"><a class="header" href="#后发先至">后发先至</a></h2>
+<p>发动需要准备的战法时，使自身获得先攻状态，持续1回合
+适合武将：携带较多准备战法或自带战法需要准备的武将，例如关羽，庞统</p>
+<h2 id="顺天应时"><a class="header" href="#顺天应时">顺天应时</a></h2>
+<p>施加持续性状态时，有35%的机率增加1回合持续时间
+*不包括夺魂，智计
+适合武将：顾名思义，适合给敌方施加持续性状态的武将，例如陆逊</p>
+<h2 id="疾战突围"><a class="header" href="#疾战突围">疾战突围</a></h2>
+<p>发动需要准备的战法时，有20%的机率跳过1回合准备
+适合武将：携带自带战法需要准备的武将，例如钟会，张角</p>
+<h2 id="以治击乱"><a class="header" href="#以治击乱">以治击乱</a></h2>
+<p>对处于控制状态的武将造成的伤害提高12%
+适合武将：在控制较多的队伍里的输出，例如三贾中的赵云贾诩和魏法骑中的程昱贾诩</p>
+<h2 id="攻其不备"><a class="header" href="#攻其不备">攻其不备</a></h2>
+<p>对敌军兵力最高者造成的伤害提高10%
+适合武将：携带AOE战法的武将，例如程昱，赵云</p>
+<h2 id="大谋不谋"><a class="header" href="#大谋不谋">大谋不谋</a></h2>
+<p>战斗中，每次成功发动主动战法时，有50%机率增加4.5%奇谋和会心，持续2回合，可叠加两次
+适合武将：携带高发动率主动战法且高输出的武将，例如甘宁，陆逊</p>
+<h2 id="谋定后动"><a class="header" href="#谋定后动">谋定后动</a></h2>
+<p>自身所有不需要准备的主动战法<strong>增加1回合准备</strong>，该战法伤害提高95%
+*不会影响太平道法的判定
+适合武将：提升伤害不如瞬发两次，而且会拖慢节奏，提升被打断准备的风险，暂时不推荐使用</p>
+<h2 id="鬼谋"><a class="header" href="#鬼谋">鬼谋</a></h2>
+<p>提升4.5%主动战法伤害
+适合武将：携带输出型主动战法的武将，例如程昱，赵云</p>
+<h2 id="神机"><a class="header" href="#神机">神机</a></h2>
+<p>战斗首回合，使自身获得先攻状态(优先行动)
+适合武将：速度较慢且需要先手攻击的武将，例如贾诩</p>
+<h2 id="占卜"><a class="header" href="#占卜">占卜</a></h2>
+<p>每回合行动时，自身随机获得受到兵刃伤害降低6%或受到谋略伤害降低6%效果中的一种，持续1回合
+适合武将：不适合其他兵书的武将，例如周瑜</p>
+<h2 id="妙算"><a class="header" href="#妙算">妙算</a></h2>
+<p>造成控制效果时，50%机率减低目标16点智力和统率，持续1回合
+适合武将：控制类战法较多的武将，例如贾诩</p>
+<h2 id="将威"><a class="header" href="#将威">将威</a></h2>
+<p>提高自身2.5%会心和奇谋机率
+适合武将：基本适合所有选择虚实兵书的武将，例如赵云，程昱</p>
+<h2 id="合变"><a class="header" href="#合变">合变</a></h2>
+<p>每回合结束时，若本回合自身未发动主动战法，则使自身受到的兵刃和谋略伤害降低6%，持续1回合
+*准备发动并不算作发动
+适合武将：携带主动战法发动率比较不稳定的武将，例如关羽</p>
+<h1 id="三军型"><a class="header" href="#三军型">三：军型</a></h1>
+<h2 id="严阵以待"><a class="header" href="#严阵以待">严阵以待</a></h2>
+<p>战斗前2回合，为友军群体 (2人) 分担15%的伤害
+适合武将：辅助型武将，例如曹操</p>
+<h2 id="避其锐气"><a class="header" href="#避其锐气">避其锐气</a></h2>
+<p>自身为主将时，战斗前2回合，获得10%规避
+适合武将：主将位的法师，例如诸葛亮</p>
+<h2 id="三里而还"><a class="header" href="#三里而还">三里而还</a></h2>
+<p>战斗第3回合，自身获得反击状态 (伤害率50%)，持续2回合
+*可以和反击类战法叠加效果
+适合武将：携带了嘲讽类战法的反击型武将，例如夏侯惇</p>
+<h2 id="守而有道"><a class="header" href="#守而有道">守而有道</a></h2>
+<p>自身受到的谋略伤害降低4% (受统率属性影响)
+适合武将：携带了嘲讽类战法的吸收伤害武将，例如程普，周泰</p>
+<h2 id="惜兵爱民"><a class="header" href="#惜兵爱民">惜兵爱民</a></h2>
+<p>每回合有50%机率回复一定兵力 (恢复率65%)
+适合武将：辅助型武将，例如周泰，鲁肃</p>
+<h2 id="无战而胜"><a class="header" href="#无战而胜">无战而胜</a></h2>
+<p>造成控制效果时，自身受到的兵刃伤害和谋略伤害降低10%，持续1回合
+适合武将：会造成控制效果的吸收伤害型武将，例如夏侯惇，程普</p>
+<h2 id="守势"><a class="header" href="#守势">守势</a></h2>
+<p>战斗前3回合，自身受到的所有伤害降低5%
+适合武将：典韦，周泰</p>
+<h2 id="静心"><a class="header" href="#静心">静心</a></h2>
+<p>使自身受到主动战法伤害降低7%
+适合武将：比较有针对性的战法，要看服内情况选择是否携带</p>
+<h2 id="铁甲"><a class="header" href="#铁甲">铁甲</a></h2>
+<p>使自身受到普通攻击以及突击战法伤害降低6%
+适合武将：周泰，程普</p>
+<h2 id="刚柔"><a class="header" href="#刚柔">刚柔</a></h2>
+<p>受到治疗时，提高7%治疗效果
+适合武将：鲁肃，周泰</p>
+<h2 id="防备"><a class="header" href="#防备">防备</a></h2>
+<p>使自身受到的伤害降低3%
+适合武将：所有选择军型兵书的武将</p>
+<h2 id="勇毅"><a class="header" href="#勇毅">勇毅</a></h2>
+<p>受到克制兵种的伤害减少15%
+适合武将：同样看服内情况选择是否携带</p>
+<h1 id="四九变"><a class="header" href="#四九变">四：九变</a></h1>
+<h2 id="援其必攻"><a class="header" href="#援其必攻">援其必攻</a></h2>
+<p>为损失兵力最多的友军恢复兵力时，使其受到的伤害降低12%，持续1回合
+适合武将：携带治疗战法的武将，刮骨稳定触发</p>
+<h2 id="无功而厉"><a class="header" href="#无功而厉">无功而厉</a></h2>
+<p>每回合行动时，若自身处于<strong>缴械</strong>，<strong>计穷</strong>，<strong>震慑</strong>或<strong>混乱</strong>状态，则恢复一定兵力 (恢复率60%)
+适合武将：肉弓中的陆逊</p>
+<h2 id="临敌不乱"><a class="header" href="#临敌不乱">临敌不乱</a></h2>
+<p>战斗第4回合，移除友军单体所有的负面状态
+适合武将：万用的兵书，可以给携带兵种，阵法，辅助型指挥战法的工具人使用，例如郭嘉</p>
+<h2 id="诱敌之策"><a class="header" href="#诱敌之策">诱敌之策</a></h2>
+<p>自身<strong>受到的伤害提高</strong>16%，友军造成的伤害提高5%
+*多人携带效果无法叠加
+适合武将：工具人，例如黄月英</p>
+<h2 id="分而疾战"><a class="header" href="#分而疾战">分而疾战</a></h2>
+<p>自身受到的伤害降低3.5% (受速度属性影响)
+适合武将：速度快的武将，例如公孙瓒</p>
+<h2 id="示敌以弱"><a class="header" href="#示敌以弱">示敌以弱</a></h2>
+<p>战斗前4回合，使自身<strong>造成的兵刃和谋略伤害降低15%</strong>，第5回合开始，自身主动战法发动率提高7%
+适合武将：携带控制型主动战法且低输出的武将，例如貂蝉</p>
+<h2 id="厉军"><a class="header" href="#厉军">厉军</a></h2>
+<p>战斗中，使随机友军单体造成伤害提高3%
+适合武将：基本适合所有选择九变兵书的武将，例如左慈，蔡文姬</p>
+<h2 id="百战"><a class="header" href="#百战">百战</a></h2>
+<p>自带战法的发动机率提高3%
+适合武将：顾名思义，适合自带战法是主动战法的武将，例如陆逊，貂蝉</p>
+<h2 id="掩虚"><a class="header" href="#掩虚">掩虚</a></h2>
+<p>每回合行动时，若自身为我军损失兵力最多者，自身受到的兵刃和谋略伤害降低6%
+适合武将：统帅低或携带吸收伤害战法的武将，例如黄月英</p>
+<h2 id="速战"><a class="header" href="#速战">速战</a></h2>
+<p>战斗中，提高自身24点速度
+适合武将：需要先手或需要速度属性的武将，例如公孙瓒，貂蝉</p>
+<h2 id="驰援"><a class="header" href="#驰援">驰援</a></h2>
+<p>战斗中，随机援护一名友军，持续1回合
+适合武将：统帅较高的辅助型武将，例如曹操</p>
+<h2 id="救主"><a class="header" href="#救主">救主</a></h2>
+<p>战斗中，使我军主将受到的伤害降低7%，自身<strong>受到的伤害提高7%</strong>
+*多人携带效果无法叠加
+适合武将：适合在副将位置且主将容易死的武将，例如郭嘉，黄月英</p>
+<h2 id="散仙"><a class="header" href="#散仙">散仙</a></h2>
+<p>获得6%规避效果
+适合武将：此兵书比较特殊，只能被于吉，张角，左慈，华佗使用，当中左慈以及华佗偏向辅助位，较适合此兵书</p>
+<div id="admonition-出处" class="admonition admonish-info" role="note" aria-labelledby="admonition-出处-title">
+<div class="admonition-title">
+<div id="admonition-出处-title">
+<p>出处</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-出处"></a>
+</div>
+<div>
+<p><a href="https://forum.gamer.com.tw/C.php?bsn=36815&amp;snA=5254">【攻略】三國志戰略版 兵書大全</a></p>
+</div>
+</div>
+
+                        </div>
+                        <div id="sidetoc">
+                            <nav id="pagetoc"></nav>
+                        </div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="tactics-collection.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="attack-city.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="tactics-collection.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="attack-city.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>
