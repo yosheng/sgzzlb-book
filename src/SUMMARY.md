@@ -25,6 +25,7 @@
         - [开荒组合搭配](./season3/reclaim-team.md)
         - [野地难度](./season3/wilderness.md)
         - [阵容搭配](./season3/team-composition.md)
+        - [附件下载](./season3/attachment.md)
 - [赛季游戏任务](./seasons-mission.md)
 - [赛季武将盘点](./seasons-general.md)
 - [PK赛季武将组合](./pk-team-composition.md)
